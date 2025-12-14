@@ -15,37 +15,43 @@ def load_data():
 
 df = load_data()
 
-# ---------------- VALIDATE CSV ----------------
-required_cols = ["stream", "department", "job_role",
-                 "company_name", "company_level", "company_locations"]
-
-for col in required_cols:
-    if col not in df.columns:
-        st.error(f"Missing column in CSV: {col}")
-        st.stop()
-
 # ---------------- SESSION STATE ----------------
-for key in ["stream", "department", "role",
-            "show_dept", "show_role"]:
-    if key not in st.session_state:
-        st.session_state[key] = None
+if "stream_loaded" not in st.session_state:
+    st.session_state.stream_loaded = False
+if "dept_loaded" not in st.session_state:
+    st.session_state.dept_loaded = False
+if "submitted" not in st.session_state:
+    st.session_state.submitted = False
 
 # ---------------- STYLES ----------------
 st.markdown("""
 <style>
+body { background:#020617; }
 .card {
     background:#020617;
     border:1px solid #1e293b;
     border-radius:16px;
     padding:20px;
-    margin-bottom:16px;
+    margin-bottom:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
 }
+.title { font-size:38px; font-weight:800; color:#e5e7eb; }
+.subtitle { color:#94a3b8; font-size:16px; }
 .badge {
-    padding:4px 12px;
+    display:inline-block;
+    padding:6px 14px;
     border-radius:999px;
+    font-size:13px;
     border:1px solid #334155;
     color:#38bdf8;
-    font-size:12px;
+}
+.tech {
+    background:#020617;
+    border:1px solid #334155;
+    border-radius:12px;
+    padding:10px;
+    margin-top:8px;
+    color:#e5e7eb;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -53,17 +59,19 @@ st.markdown("""
 # ---------------- HEADER ----------------
 st.markdown("""
 <div class="card">
-  <h1>🎓 AI Career Recommendation System</h1>
-  <p>Stream → Department → Role (Button Controlled)</p>
+  <div class="title">🎓 AI Career Recommendation System</div>
+  <div class="subtitle">Stream → Department → Role based career guidance</div>
 </div>
 """, unsafe_allow_html=True)
 
-# ---------------- FORM ----------------
+st.markdown("<br>", unsafe_allow_html=True)
+
+# ---------------- STUDENT FORM ----------------
 with st.form("career_form"):
 
-    st.markdown("### 👤 Student Profile")
+    st.markdown("## 👤 Student Profile")
 
-    # -------- STREAM --------
+    # ---------- STREAM ----------
     stream = st.selectbox(
         "🎓 Select Stream",
         sorted(df["stream"].unique())
@@ -72,75 +80,100 @@ with st.form("career_form"):
     load_dept = st.form_submit_button("➡️ Load Departments")
 
     if load_dept:
-        st.session_state.stream = stream
-        st.session_state.show_dept = True
-        st.session_state.show_role = False
+        st.session_state.stream_loaded = True
+        st.session_state.dept_loaded = False
+        st.session_state.submitted = False
 
-    # -------- DEPARTMENT --------
-    if st.session_state.show_dept:
+    # ---------- DEPARTMENT ----------
+    if st.session_state.stream_loaded:
+        departments = sorted(df[df["stream"] == stream]["department"].unique())
 
-        dept_list = sorted(
-            df[df["stream"] == st.session_state.stream]["department"].unique()
+        department = st.selectbox(
+            "🏫 Select Department",
+            departments
         )
 
-        department = st.selectbox("🏫 Select Department", dept_list)
+        load_roles = st.form_submit_button("➡️ Load Roles")
 
-        load_role = st.form_submit_button("➡️ Load Roles")
+        if load_roles:
+            st.session_state.dept_loaded = True
+            st.session_state.submitted = False
 
-        if load_role:
-            st.session_state.department = department
-            st.session_state.show_role = True
-
-    # -------- ROLE --------
-    if st.session_state.show_role:
-
-        role_list = sorted(
+    # ---------- ROLE ----------
+    if st.session_state.stream_loaded and st.session_state.dept_loaded:
+        roles = sorted(
             df[
-                (df["stream"] == st.session_state.stream) &
-                (df["department"] == st.session_state.department)
+                (df["stream"] == stream) &
+                (df["department"] == department)
             ]["job_role"].unique()
         )
 
-        role = st.selectbox("💼 Select Interested Role", role_list)
+        role = st.selectbox(
+            "💼 Select Interested Role",
+            roles
+        )
 
         cgpa = st.slider("📊 CGPA / Score", 5.0, 10.0, 7.0, 0.1)
         internship = st.selectbox("🧑‍💻 Internship Experience", ["Yes", "No"])
 
-        final_submit = st.form_submit_button("🚀 Get Career Recommendations")
+        submit = st.form_submit_button("🚀 Get Career Recommendations")
 
-    else:
-        final_submit = False
+        if submit:
+            st.session_state.submitted = True
 
 # ---------------- RESULTS ----------------
-if final_submit:
+if st.session_state.submitted:
 
-    st.markdown("## 👤 Student Profile")
-    st.write({
-        "Stream": st.session_state.stream,
-        "Department": st.session_state.department,
-        "Role": role,
-        "CGPA": cgpa,
-        "Internship": internship
-    })
+    st.markdown("<br>", unsafe_allow_html=True)
 
+    # -------- PROFILE CARD --------
+    st.markdown(f"""
+    <div class="card">
+        <h3>👤 Student Profile</h3>
+        <p><b>Stream:</b> {stream}</p>
+        <p><b>Department:</b> {department}</p>
+        <p><b>Role:</b> {role}</p>
+        <p><b>CGPA:</b> {cgpa}</p>
+        <p><b>Internship:</b> {internship}</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # -------- FILTER COMPANIES --------
     result_df = df[
-        (df["stream"] == st.session_state.stream) &
-        (df["department"] == st.session_state.department) &
+        (df["stream"] == stream) &
+        (df["department"] == department) &
         (df["job_role"] == role)
-    ].head(9)
+    ]
 
     if result_df.empty:
-        st.warning("No exact matches found.")
+        st.warning("⚠️ No exact matches found. Showing similar companies.")
+        result_df = df[df["stream"] == stream].head(6)
     else:
-        st.markdown("## 🏢 Recommended Companies")
-        cols = st.columns(3)
-        for i, (_, row) in enumerate(result_df.iterrows()):
-            with cols[i % 3]:
-                st.markdown(f"""
-                <div class="card">
-                    <h3>{row.company_name}</h3>
-                    <span class="badge">{row.company_level}</span>
-                    <p><b>Role:</b> {row.job_role}</p>
-                    <p><b>Locations:</b> {row.company_locations}</p>
+        result_df = result_df.head(9)
+
+    # -------- COMPANY CARDS --------
+    st.markdown("## 🏢 Recommended Companies")
+
+    cols = st.columns(3)
+    for i, (_, row) in enumerate(result_df.iterrows()):
+        with cols[i % 3]:
+            st.markdown(f"""
+            <div class="card">
+                <h3>🏢 {row.company_name}</h3>
+                <span class="badge">{row.company_level} LEVEL</span>
+                <p style="margin-top:10px;">💼 <b>Role:</b> {row.job_role}</p>
+                <p>📍 <b>Locations:</b> {row.company_locations}</p>
+                <div class="tech">
+                    🛠️ <b>Technologies to Learn:</b><br>
+                    {row.technologies}
                 </div>
-                """, unsafe_allow_html=True)
+            </div>
+            """, unsafe_allow_html=True)
+
+# ---------------- FOOTER ----------------
+st.markdown("""
+<br><br>
+<p style="text-align:center;color:#64748b;">
+Built with ❤️ using Streamlit & Data Science
+</p>
+""", unsafe_allow_html=True)
