@@ -7,102 +7,69 @@ st.set_page_config(
     layout="wide"
 )
 
-# ================= LOAD DATA =================
+# ================= LOAD CSVs =================
 career_df = pd.read_csv("career_master.csv")
 company_df = pd.read_csv("career_companies_master.csv")
 
 # ================= SESSION STATE =================
-for key, val in {
-    "submitted": False,
-    "department": None,
-    "role": None,
-    "cgpa": 7.0,
-    "internship": "No",
-    "tech_ratings": {},
-    "core_ratings": {}
-}.items():
-    if key not in st.session_state:
-        st.session_state[key] = val
-
-# ================= CUSTOM CSS =================
-st.markdown("""
-<style>
-body {
-    background-color: #020617;
-}
-.block {
-    background:#020617;
-    border:1px solid #1e293b;
-    border-radius:16px;
-    padding:18px;
-    margin-bottom:18px;
-}
-.card-title {
-    color:#38bdf8;
-    font-size:18px;
-    font-weight:600;
-}
-.sub {
-    color:#cbd5f5;
-    font-size:14px;
-}
-</style>
-""", unsafe_allow_html=True)
+if "submitted" not in st.session_state:
+    st.session_state.submitted = False
 
 # ================= HEADER =================
-col1, col2 = st.columns([3, 7])
-
-with col2:
-    st.markdown("""
-    <h1 style="color:white;">🎓 AI Career Recommendation System</h1>
-    <p style="color:#94a3b8;">
-    Department-aware • Role-based • Skill-driven
-    </p>
-    """, unsafe_allow_html=True)
+st.markdown("""
+<h1 style="text-align:center;">🎓 AI Career Recommendation System</h1>
+<p style="text-align:center;color:gray;">
+Skill-based Career Guidance for Engineering, Medical, Pharmacy, UG & PG Students
+</p>
+""", unsafe_allow_html=True)
 
 # ================= SIDEBAR =================
 st.sidebar.markdown("## 👤 Student Profile")
 
-# Department
-departments = sorted(career_df["department"].unique())
-st.session_state.department = st.sidebar.selectbox(
-    "Department", departments
+# ---- Stream ----
+stream = st.sidebar.selectbox(
+    "Stream",
+    sorted(career_df["stream"].unique())
 )
 
-# Role (filtered by department)
-roles = career_df[
-    career_df["department"] == st.session_state.department
-]["role"].unique()
-
-st.session_state.role = st.sidebar.selectbox(
-    "Interested Role", sorted(roles)
+# ---- Department (filtered by stream) ----
+dept_df = career_df[career_df["stream"] == stream]
+department = st.sidebar.selectbox(
+    "Department",
+    sorted(dept_df["department"].unique())
 )
 
-st.session_state.cgpa = st.sidebar.slider("CGPA", 5.0, 10.0, 7.0, 0.1)
-st.session_state.internship = st.sidebar.selectbox(
-    "Internship Completed?", ["Yes", "No"]
+# ---- Role (filtered by department) ----
+role_df = dept_df[dept_df["department"] == department]
+role = st.sidebar.selectbox(
+    "Interested Role",
+    sorted(role_df["role"].unique())
 )
+
+cgpa = st.sidebar.slider("CGPA", 5.0, 10.0, 7.0, 0.1)
+internship = st.sidebar.selectbox("Internship Completed?", ["Yes", "No"])
 
 # ================= SKILLS =================
 st.sidebar.markdown("## 🧠 Skill Self-Assessment")
 
 role_row = career_df[
-    (career_df["department"] == st.session_state.department) &
-    (career_df["role"] == st.session_state.role)
+    (career_df["stream"] == stream) &
+    (career_df["department"] == department) &
+    (career_df["role"] == role)
 ].iloc[0]
 
 tech_skills = role_row["technical_skills"].split("|")
 core_skills = role_row["core_skills"].split("|")
 
 st.sidebar.markdown("### 🛠️ Technical Skills")
-st.session_state.tech_ratings = {}
+tech_ratings = {}
 for s in tech_skills:
-    st.session_state.tech_ratings[s] = st.sidebar.slider(s, 1, 5, 3)
+    tech_ratings[s] = st.sidebar.slider(s, 1, 5, 3)
 
 st.sidebar.markdown("### 🧩 Core Skills")
-st.session_state.core_ratings = {}
+core_ratings = {}
 for s in core_skills:
-    st.session_state.core_ratings[s] = st.sidebar.slider(s, 1, 5, 3)
+    core_ratings[s] = st.sidebar.slider(s, 1, 5, 3)
 
 submit = st.sidebar.button("🔍 Get Recommendations")
 
@@ -111,18 +78,18 @@ if submit:
     st.session_state.submitted = True
 
 if not st.session_state.submitted:
-    st.info("👉 Fill profile and click **Get Recommendations**")
+    st.info("👈 Fill profile and click **Get Recommendations**")
     st.stop()
 
-# ================= SCORE =================
-avg_tech = sum(st.session_state.tech_ratings.values()) / len(st.session_state.tech_ratings)
-avg_core = sum(st.session_state.core_ratings.values()) / len(st.session_state.core_ratings)
+# ================= SCORE LOGIC =================
+avg_tech = sum(tech_ratings.values()) / len(tech_ratings)
+avg_core = sum(core_ratings.values()) / len(core_ratings)
 
 final_score = (
-    (st.session_state.cgpa / 10) * 0.30 +
+    (cgpa / 10) * 0.30 +
     (avg_tech / 5) * 0.35 +
     (avg_core / 5) * 0.25 +
-    (0.10 if st.session_state.internship == "Yes" else 0)
+    (0.10 if internship == "Yes" else 0)
 )
 
 if final_score >= 0.70:
@@ -139,15 +106,25 @@ st.success(profile)
 
 # ================= COMPANY FILTER =================
 filtered = company_df[
-    (company_df["role"] == st.session_state.role) &
-    (company_df["department"] == st.session_state.department) &
+    (company_df["stream"] == stream) &
+    (company_df["department"] == department) &
+    (company_df["role"] == role) &
     (company_df["company_level"].isin(levels))
 ]
 
-# ================= TABLE =================
+if filtered.empty:
+    st.warning("No companies found for this profile. Showing general options.")
+    filtered = company_df[
+        (company_df["stream"] == stream) &
+        (company_df["department"] == department) &
+        (company_df["role"] == role)
+    ].head(5)
+
+# ================= COMPANY TABLE =================
 st.subheader("🏢 Company Recommendations")
+
 st.dataframe(
-    filtered[["company_name", "role", "company_level"]],
+    filtered[["company_name", "company_level", "locations"]],
     use_container_width=True,
     hide_index=True
 )
@@ -159,17 +136,24 @@ cols = st.columns(2)
 for i, (_, r) in enumerate(filtered.iterrows()):
     with cols[i % 2]:
         st.markdown(f"""
-        <div class="block">
-            <div class="card-title">🏢 {r.company_name}</div>
-            <p class="sub">👨‍💻 Role: {r.role}</p>
-            <p class="sub">🎓 Stream: {r.department}</p>
-            <p class="sub">📍 Branches: {r.locations}</p>
-            <p class="sub">🛠️ Technologies: {", ".join(tech_skills)}</p>
+        <div style="
+            background:#020617;
+            border:1px solid #1e293b;
+            border-radius:16px;
+            padding:16px;
+            margin-bottom:16px;
+        ">
+            <h4 style="color:#38bdf8;">🏢 {r.company_name}</h4>
+            <p>👨‍💻 <b>Role:</b> {r.role}</p>
+            <p>🎓 <b>Department:</b> {department}</p>
+            <p>⭐ <b>Level:</b> {r.company_level}</p>
+            <p>📍 <b>Locations:</b> {r.locations}</p>
+            <p>🛠️ <b>Skills:</b> {", ".join(tech_skills)}</p>
         </div>
         """, unsafe_allow_html=True)
 
 # ================= FOOTER =================
 st.markdown(
-    "<p style='text-align:center;color:#94a3b8;'>Built with ❤️ using Data Science & AI</p>",
+    "<p style='text-align:center;color:gray;'>Built with ❤️ using Data Science & AI</p>",
     unsafe_allow_html=True
 )
