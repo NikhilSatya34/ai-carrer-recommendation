@@ -51,7 +51,8 @@ st.set_page_config(
 )
 
 # -------------------- LOAD DATA --------------------
-df = pd.read_csv("Career_Master_Companies.csv")
+path_df = pd.read_csv("carrer_path_master.csv")
+company_df = pd.read_csv("Career_Master_Companies.csv")
 
 # -------------------- STYLES --------------------
 st.markdown("""
@@ -202,5 +203,6 @@ st.markdown("""
 Built with ❤️ using Streamlit & Data Science
 </p>
 """, unsafe_allow_html=True)
+
 
 
