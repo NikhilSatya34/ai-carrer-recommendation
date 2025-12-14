@@ -1,6 +1,48 @@
 import streamlit as st
 import pandas as pd
 
+# ---------------- STREAM → DEPARTMENT MAP ----------------
+STREAM_DEPT_MAP = {
+    "Engineering": ["AIDS", "AIML", "CSE", "ECE", "EEE", "Civil", "Mechanical"],
+    "Medical": ["MBBS", "Nursing", "Physiotherapy"],
+    "Pharma": ["B.Pharmacy", "M.Pharmacy", "D.Pharmacy"],
+    "UG": ["B.A", "B.Sc", "B.Com"],
+    "PG": ["M.Sc", "M.Tech", "MBA", "MCA"]
+}
+
+# ---------------- DEPARTMENT → ROLE MAP ----------------
+DEPT_ROLE_MAP = {
+    # Engineering
+    "AIDS": ["AI Engineer", "ML Engineer", "Data Scientist"],
+    "AIML": ["AI Engineer", "ML Engineer", "Research Scientist"],
+    "CSE": ["Software Engineer", "Backend Developer", "Frontend Developer", "Full Stack Developer"],
+    "ECE": ["Embedded Engineer", "VLSI Engineer"],
+    "EEE": ["Electrical Engineer", "Power Systems Engineer"],
+    "Civil": ["Site Engineer", "Structural Engineer"],
+    "Mechanical": ["Design Engineer", "Production Engineer"],
+
+    # Medical
+    "MBBS": ["Junior Doctor", "Medical Officer"],
+    "Nursing": ["Staff Nurse", "ICU Nurse"],
+    "Physiotherapy": ["Physiotherapist"],
+
+    # Pharma
+    "B.Pharmacy": ["Pharmacist", "Medical Representative"],
+    "M.Pharmacy": ["Clinical Research Associate"],
+    "D.Pharmacy": ["Retail Pharmacist"],
+
+    # UG
+    "B.A": ["Content Writer", "HR Executive"],
+    "B.Sc": ["Research Assistant", "Lab Assistant"],
+    "B.Com": ["Accountant", "Audit Assistant"],
+
+    # PG
+    "M.Sc": ["Data Analyst", "Research Scientist"],
+    "M.Tech": ["Senior Engineer", "Solution Architect"],
+    "MBA": ["Business Analyst", "Product Manager"],
+    "MCA": ["Software Engineer", "System Analyst"]
+}
+
 # -------------------- PAGE CONFIG --------------------
 st.set_page_config(
     page_title="AI Career Recommendation System",
@@ -58,28 +100,21 @@ with st.form("career_form"):
     with col1:
         stream = st.selectbox(
             "🎓 Stream",
-            sorted(df["stream"].unique())
+            list(STREAM_DEPT_MAP.keys())
         )
 
-    # ---------- DEPARTMENT (FILTERED BY STREAM) ----------
+    # ---------- DEPARTMENT (FROM STREAM MAP) ----------
     with col2:
         department = st.selectbox(
             "🏫 Department",
-            sorted(
-                df[df["stream"] == stream]["department"].unique()
-            )
+            STREAM_DEPT_MAP.get(stream, [])
         )
 
-    # ---------- ROLE (FILTERED BY STREAM + DEPARTMENT) ----------
+    # ---------- ROLE (FROM DEPARTMENT MAP) ----------
     with col3:
         role = st.selectbox(
             "💼 Interested Role",
-            sorted(
-                df[
-                    (df["stream"] == stream) &
-                    (df["department"] == department)
-                ]["job_role"].unique()
-            )
+            DEPT_ROLE_MAP.get(department, [])
         )
 
     col4, col5 = st.columns(2)
