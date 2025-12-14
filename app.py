@@ -16,7 +16,7 @@ st.set_page_config(
 @st.cache_data
 def load_data():
     try:
-        df = pd.read_csv("Master_Companies_Technologies.csv")
+        df = pd.read_csv("Master_Comapnies_Technologies.csv")
     except FileNotFoundError:
         st.error("❌ CSV file not found. Please check file name and location.")
         st.stop()
@@ -251,5 +251,6 @@ st.markdown("""
 Built with ❤️ using Streamlit & Data Science
 </p>
 """, unsafe_allow_html=True)
+
 
 
