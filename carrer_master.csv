@@ -1,0 +1,66 @@
+Course_Level,Category,Department,Interested_Role,Technical_Skills,Core_Skills
+
+UG,Engineering,CSE,Frontend Developer,"HTML|CSS|JavaScript|React|UI Design","Creativity|UI Thinking|Problem Solving"
+UG,Engineering,CSE,Backend Developer,"Python|Java|SQL|APIs|Databases","Logic Building|Debugging|Problem Solving"
+UG,Engineering,CSE,Full Stack Developer,"HTML|CSS|JavaScript|Python|SQL","System Thinking|Adaptability"
+UG,Engineering,CSE,Software Tester,"Manual Testing|Automation|Selenium","Attention to Detail|Analytical Thinking"
+UG,Engineering,CSE,DevOps Engineer,"Linux|Docker|CI/CD|AWS","Automation Mindset|Problem Solving"
+
+UG,Engineering,AIML,ML Engineer,"Python|NumPy|Pandas|Scikit-learn|TensorFlow","Problem Solving|Analytical Thinking"
+UG,Engineering,AIML,AI Engineer,"Python|Deep Learning|Neural Networks","Logical Reasoning|Research Mindset"
+UG,Engineering,AIML,Data Scientist,"Python|Statistics|Machine Learning|Visualization","Critical Thinking|Curiosity"
+
+UG,Engineering,AIDS,Data Analyst,"Python|SQL|Excel|Power BI|Tableau","Analytical Thinking|Attention to Detail"
+UG,Engineering,AIDS,BI Developer,"SQL|Power BI|ETL","Business Understanding|Accuracy"
+
+UG,Engineering,ECE,Embedded Engineer,"C|Embedded C|Microcontrollers|RTOS","Debugging|Hardware Understanding"
+UG,Engineering,ECE,VLSI Engineer,"Verilog|VHDL|FPGA|ASIC","Analytical Thinking|Precision"
+UG,Engineering,ECE,Network Engineer,"Networking|TCP/IP|Routing","Problem Solving|Logical Thinking"
+
+UG,Engineering,EEE,Electrical Engineer,"Power Systems|MATLAB|SCADA","Safety Awareness|Troubleshooting"
+UG,Engineering,EEE,Control Systems Engineer,"PLC|Automation|MATLAB","Precision|Logical Thinking"
+
+UG,Engineering,Mechanical,Design Engineer,"AutoCAD|SolidWorks|CATIA|ANSYS","Creativity|Design Thinking"
+UG,Engineering,Mechanical,Production Engineer,"Lean Manufacturing|Quality Control","Process Optimization|Discipline"
+UG,Engineering,Mechanical,Maintenance Engineer,"Machine Maintenance|Diagnostics","Problem Solving|Responsibility"
+
+UG,Engineering,Civil,Site Engineer,"AutoCAD|Estimation|Surveying","Planning|Execution"
+UG,Engineering,Civil,Structural Engineer,"STAAD Pro|ETABS|AutoCAD","Attention to Detail|Analytical Thinking"
+UG,Engineering,Civil,Planning Engineer,"MS Project|Primavera","Time Management|Coordination"
+
+PG,Engineering,M.Tech,CSE,Software Architect,"System Design|Cloud Computing","Strategic Thinking|Leadership"
+PG,Engineering,M.Tech,AIML,AI Researcher,"Deep Learning|Research Methods","Research Mindset|Innovation"
+
+UG,Medical,MBBS,Junior Doctor,"Diagnosis|Clinical Practice|Patient Care","Decision Making|Empathy"
+UG,Medical,MBBS,Medical Officer,"Clinical Knowledge|Medical Ethics","Responsibility|Communication"
+UG,Medical,Nursing,Staff Nurse,"Patient Monitoring|IV Therapy","Empathy|Care"
+UG,Medical,Nursing,ICU Nurse,"Critical Care|Ventilator Handling","Stress Management|Focus"
+UG,Medical,Allied Health,Lab Technician,"Lab Instruments|Sample Analysis","Accuracy|Attention to Detail"
+UG,Medical,Allied Health,Radiology Technician,"Imaging Equipment|Radiology","Technical Accuracy|Care"
+
+UG,Pharmacy,B.Pharm,Medical Representative,"Product Knowledge|Sales|Marketing","Communication|Persuasion"
+UG,Pharmacy,B.Pharm,Clinical Research Associate,"GCP|Clinical Trials|Documentation","Attention to Detail"
+UG,Pharmacy,B.Pharm,Quality Control Analyst,"Drug Testing|Lab Instruments","Accuracy|Discipline"
+
+PG,Pharmacy,M.Pharm,Drug Safety Associate,"Pharmacovigilance|MedDRA","Critical Thinking"
+PG,Pharmacy,M.Pharm,Formulation Scientist,"Drug Formulation|Stability Testing","Problem Solving|Innovation"
+
+UG,Science,B.Sc Physics,Lab Assistant,"Lab Instruments|Data Recording","Accuracy|Observation"
+UG,Science,B.Sc Chemistry,Quality Analyst,"Chemical Analysis|Spectroscopy","Attention to Detail"
+UG,Science,B.Sc Biology,Research Assistant,"Lab Techniques|Data Collection","Curiosity|Observation"
+
+PG,Science,M.Sc Physics,Research Scientist,"Advanced Physics|Simulation","Analytical Thinking|Research Mindset"
+PG,Science,M.Sc Chemistry,Analytical Chemist,"Chromatography|Lab Analysis","Precision|Focus"
+
+UG,Commerce,B.Com,Account Executive,"Accounting|Tally|GST","Numerical Ability|Accuracy"
+UG,Commerce,B.Com,Audit Assistant,"Auditing|Compliance","Integrity|Attention to Detail"
+PG,Commerce,M.Com,Financial Analyst,"Financial Modeling|Excel","Analytical Thinking"
+
+UG,Management,BBA,Business Executive,"Business Operations|MS Excel","Decision Making|Leadership"
+UG,Management,BBA,Marketing Executive,"Digital Marketing|SEO|Content","Creativity|Communication"
+PG,Management,MBA,Business Analyst,"Excel|SQL|Power BI","Problem Solving|Critical Thinking"
+PG,Management,MBA,HR Executive,"Recruitment|HR Policies","People Management|Empathy"
+PG,Management,MBA,Operations Manager,"Process Management|Supply Chain","Leadership|Planning"
+
+UG,IT,BCA,Software Developer,"Python|Java|Web Development","Logic Building|Problem Solving"
+PG,IT,MCA,Software Engineer,"Full Stack|Databases","System Thinking|Debugging"
