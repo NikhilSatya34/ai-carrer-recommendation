@@ -89,7 +89,6 @@ st.markdown("""
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-# -------------------- FORM --------------------
 with st.form("career_form"):
 
     st.markdown("### 👤 Student Profile")
@@ -97,44 +96,47 @@ with st.form("career_form"):
     col1, col2, col3 = st.columns(3)
 
     # ---------- STREAM ----------
-stream = st.selectbox(
-    "🎓 Stream",
-    list(STREAM_DEPT_MAP.keys()),
-    key="stream"
-)
+    with col1:
+        stream = st.selectbox(
+            "🎓 Stream",
+            list(STREAM_DEPT_MAP.keys()),
+            key="stream"
+        )
 
-# ---------- RESET ON STREAM CHANGE ----------
-if "prev_stream" not in st.session_state:
-    st.session_state.prev_stream = stream
+    # ---------- RESET ON STREAM CHANGE ----------
+    if "prev_stream" not in st.session_state:
+        st.session_state.prev_stream = stream
 
-if st.session_state.prev_stream != stream:
-    st.session_state.department = None
-    st.session_state.role = None
-    st.session_state.prev_stream = stream
+    if st.session_state.prev_stream != stream:
+        st.session_state.department = None
+        st.session_state.role = None
+        st.session_state.prev_stream = stream
 
-# ---------- DEPARTMENT ----------
-department = st.selectbox(
-    "🏫 Department",
-    STREAM_DEPT_MAP.get(stream, []),
-    key="department"
-)
+    # ---------- DEPARTMENT ----------
+    with col2:
+        department = st.selectbox(
+            "🏫 Department",
+            STREAM_DEPT_MAP.get(stream, []),
+            key="department"
+        )
 
-# ---------- RESET ON DEPARTMENT CHANGE ----------
-if "prev_department" not in st.session_state:
-    st.session_state.prev_department = department
+    # ---------- RESET ON DEPARTMENT CHANGE ----------
+    if "prev_department" not in st.session_state:
+        st.session_state.prev_department = department
 
-if st.session_state.prev_department != department:
-    st.session_state.role = None
-    st.session_state.prev_department = department
+    if st.session_state.prev_department != department:
+        st.session_state.role = None
+        st.session_state.prev_department = department
 
-# ---------- ROLE ----------
-role = st.selectbox(
-    "💼 Interested Role",
-    DEPT_ROLE_MAP.get(department, []),
-    key="role"
-)
+    # ---------- ROLE ----------
+    with col3:
+        role = st.selectbox(
+            "💼 Interested Role",
+            DEPT_ROLE_MAP.get(department, []),
+            key="role"
+        )
 
-
+    # ---------- CGPA + INTERNSHIP ----------
     col4, col5 = st.columns(2)
 
     with col4:
@@ -200,4 +202,5 @@ st.markdown("""
 Built with ❤️ using Streamlit & Data Science
 </p>
 """, unsafe_allow_html=True)
+
 
