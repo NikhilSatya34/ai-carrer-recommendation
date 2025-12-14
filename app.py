@@ -1,39 +1,35 @@
 import streamlit as st
 import pandas as pd
 
-def get_companies_by_cgpa(df, stream, department, role, cgpa):
+def filter_companies_by_cgpa(df, stream, department, role, cgpa, mode="recommended"):
     base_df = df[
         (df["stream"] == stream) &
-        (df["department"] == department) &
-        (df["job_role"] == role)
+        (df["department"] == department)
     ]
 
-    # normalize company_level (safety)
-    base_df["company_level"] = base_df["company_level"].str.upper()
+    if mode == "recommended":
+        role_df = base_df[base_df["job_role"] == role]
+    else:
+        role_df = base_df[base_df["job_role"] != role]
 
-    # ---------- LOW CGPA ----------
     if cgpa < 6.5:
-        result = base_df[base_df["company_level"] == "STARTUP"].head(5)
+        result = role_df[role_df["company_level"] == "STARTUP"].head(5)
 
-    # ---------- MID CGPA ----------
     elif 6.5 <= cgpa < 8.5:
-        mid = base_df[base_df["company_level"] == "MID"].head(5)
-        startup = base_df[base_df["company_level"] == "STARTUP"].head(4)
+        mid = role_df[role_df["company_level"] == "MID"].head(5)
+        startup = role_df[role_df["company_level"] == "STARTUP"].head(4)
         result = pd.concat([mid, startup])
 
-    # ---------- HIGH CGPA ----------
     else:
-        high = base_df[base_df["company_level"] == "HIGH"].head(5)
-        mid = base_df[base_df["company_level"] == "MID"].head(4)
-        startup = base_df[base_df["company_level"] == "STARTUP"].head(3)
+        high = role_df[role_df["company_level"] == "HIGH"].head(5)
+        mid = role_df[role_df["company_level"] == "MID"].head(4)
+        startup = role_df[role_df["company_level"] == "STARTUP"].head(3)
         result = pd.concat([high, mid, startup])
 
-    # ---------- FALLBACK ----------
     if result.empty:
         result = base_df.head(6)
 
     return result.drop_duplicates("company_name")
-
 
 st.set_page_config(
     page_title="AI Career Recommendation System",
@@ -207,14 +203,14 @@ if submit and role:
 
     # -------------------- ALTERNATE COMPANIES --------------------
 
-alt_df = filter_companies_by_cgpa(
+alternate_df = filter_companies_by_cgpa(
     df, stream, department, role, cgpa, mode="alternate"
 )
 
 st.markdown("## 🔁 Alternate Companies (Same Department)")
 
 cols = st.columns(3)
-for i, (_, row) in enumerate(alt_df.iterrows()):
+for i, (_, row) in enumerate(alternate_df.iterrows()):
     with cols[i % 3]:
         techs = row["technologies"] if pd.notna(row["technologies"]) else "Not specified"
         st.markdown(f"""
@@ -236,6 +232,7 @@ st.markdown("""
 Built with ❤️ using Streamlit & Data Science
 </p>
 """, unsafe_allow_html=True)
+
 
 
 
