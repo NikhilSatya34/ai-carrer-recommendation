@@ -203,6 +203,37 @@ if result_df.empty:
                 <p>🛠️ <b>Required Technologies:</b><br>{techs}</p>
             </div>
             """, unsafe_allow_html=True)
+    # -------------------- ALTERNATE COMPANIES --------------------
+
+st.markdown("## 🔁 Alternate Companies from Your Department")
+
+alternate_df = df[
+    (df["stream"] == stream) &
+    (df["department"] == department)
+]
+
+# Remove already shown companies
+alternate_df = alternate_df[
+    ~alternate_df["company_name"].isin(result_df["company_name"])
+]
+
+if alternate_df.empty:
+    st.info("No additional companies found for this department.")
+else:
+    cols = st.columns(3)
+    for i, (_, row) in enumerate(alternate_df.iterrows()):
+        with cols[i % 3]:
+            techs = row["technologies"] if pd.notna(row["technologies"]) else "Not specified"
+
+            st.markdown(f"""
+            <div class="card">
+                <div class="company-title">🏢 {row.company_name}</div>
+                <span class="badge">{row.company_level} LEVEL</span>
+                <p>💼 <b>Role:</b> {row.job_role}</p>
+                <p>📍 <b>Location:</b> {row.company_locations}</p>
+                <p>🛠 <b>Technologies:</b><br>{techs}</p>
+            </div>
+            """, unsafe_allow_html=True)
 
 # --------------------------------------------------
 # FOOTER
@@ -213,5 +244,6 @@ st.markdown("""
 Built with ❤️ using Streamlit & Data Science
 </p>
 """, unsafe_allow_html=True)
+
 
 
