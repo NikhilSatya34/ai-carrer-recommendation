@@ -97,25 +97,43 @@ with st.form("career_form"):
     col1, col2, col3 = st.columns(3)
 
     # ---------- STREAM ----------
-    with col1:
-        stream = st.selectbox(
-            "🎓 Stream",
-            list(STREAM_DEPT_MAP.keys())
-        )
+stream = st.selectbox(
+    "🎓 Stream",
+    list(STREAM_DEPT_MAP.keys()),
+    key="stream"
+)
 
-    # ---------- DEPARTMENT (FROM STREAM MAP) ----------
-    with col2:
-        department = st.selectbox(
-            "🏫 Department",
-            STREAM_DEPT_MAP.get(stream, [])
-        )
+# ---------- RESET ON STREAM CHANGE ----------
+if "prev_stream" not in st.session_state:
+    st.session_state.prev_stream = stream
 
-    # ---------- ROLE (FROM DEPARTMENT MAP) ----------
-    with col3:
-        role = st.selectbox(
-            "💼 Interested Role",
-            DEPT_ROLE_MAP.get(department, [])
-        )
+if st.session_state.prev_stream != stream:
+    st.session_state.department = None
+    st.session_state.role = None
+    st.session_state.prev_stream = stream
+
+# ---------- DEPARTMENT ----------
+department = st.selectbox(
+    "🏫 Department",
+    STREAM_DEPT_MAP.get(stream, []),
+    key="department"
+)
+
+# ---------- RESET ON DEPARTMENT CHANGE ----------
+if "prev_department" not in st.session_state:
+    st.session_state.prev_department = department
+
+if st.session_state.prev_department != department:
+    st.session_state.role = None
+    st.session_state.prev_department = department
+
+# ---------- ROLE ----------
+role = st.selectbox(
+    "💼 Interested Role",
+    DEPT_ROLE_MAP.get(department, []),
+    key="role"
+)
+
 
     col4, col5 = st.columns(2)
 
@@ -182,3 +200,4 @@ st.markdown("""
 Built with ❤️ using Streamlit & Data Science
 </p>
 """, unsafe_allow_html=True)
+
