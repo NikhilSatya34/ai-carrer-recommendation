@@ -207,7 +207,7 @@ alternate_df = filter_companies_by_cgpa(
     df, stream, department, role, cgpa, mode="alternate"
 )
 
-st.markdown("## 🔁 Alternate Companies (Same Department)")
+st.markdown("## 🔁 Alternate Companies for this Department")
 
 cols = st.columns(3)
 for i, (_, row) in enumerate(alternate_df.iterrows()):
@@ -232,6 +232,7 @@ st.markdown("""
 Built with ❤️ using Streamlit & Data Science
 </p>
 """, unsafe_allow_html=True)
+
 
 
 
