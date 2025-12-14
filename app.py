@@ -15,7 +15,12 @@ st.set_page_config(
 # --------------------------------------------------
 @st.cache_data
 def load_data():
-    df = pd.read_csv("Master_Companies_Technologies.csv")
+    try:
+        df = pd.read_csv("./Master_Companies_Technologies.csv")
+    except FileNotFoundError:
+        st.error("❌ CSV file not found. Please check file name and location.")
+        st.stop()
+
     df["company_level"] = df["company_level"].str.upper().str.strip()
     return df
 
@@ -246,3 +251,4 @@ st.markdown("""
 Built with ❤️ using Streamlit & Data Science
 </p>
 """, unsafe_allow_html=True)
+
