@@ -1,37 +1,31 @@
 import streamlit as st
 import pandas as pd
 
-def filter_companies_by_cgpa(df, stream, department, role, cgpa, mode="recommended"):
-    """
-    mode = "recommended"  -> exact role
-    mode = "alternate"    -> other roles from same department
-    """
-
+def get_companies_by_cgpa(df, stream, department, role, cgpa):
     base_df = df[
         (df["stream"] == stream) &
-        (df["department"] == department)
+        (df["department"] == department) &
+        (df["job_role"] == role)
     ]
 
-    if mode == "recommended":
-        role_df = base_df[base_df["job_role"] == role]
-    else:
-        role_df = base_df[base_df["job_role"] != role]
+    # normalize company_level (safety)
+    base_df["company_level"] = base_df["company_level"].str.upper()
 
     # ---------- LOW CGPA ----------
     if cgpa < 6.5:
-        result = role_df[role_df["company_level"] == "STARTUP"].head(5)
+        result = base_df[base_df["company_level"] == "STARTUP"].head(5)
 
     # ---------- MID CGPA ----------
     elif 6.5 <= cgpa < 8.5:
-        mid = role_df[role_df["company_level"] == "MID"].head(5)
-        startup = role_df[role_df["company_level"] == "STARTUP"].head(4)
+        mid = base_df[base_df["company_level"] == "MID"].head(5)
+        startup = base_df[base_df["company_level"] == "STARTUP"].head(4)
         result = pd.concat([mid, startup])
 
     # ---------- HIGH CGPA ----------
     else:
-        high = role_df[role_df["company_level"] == "HIGH"].head(5)
-        mid = role_df[role_df["company_level"] == "MID"].head(4)
-        startup = role_df[role_df["company_level"] == "STARTUP"].head(3)
+        high = base_df[base_df["company_level"] == "HIGH"].head(5)
+        mid = base_df[base_df["company_level"] == "MID"].head(4)
+        startup = base_df[base_df["company_level"] == "STARTUP"].head(3)
         result = pd.concat([high, mid, startup])
 
     # ---------- FALLBACK ----------
@@ -242,6 +236,7 @@ st.markdown("""
 Built with ❤️ using Streamlit & Data Science
 </p>
 """, unsafe_allow_html=True)
+
 
 
 
