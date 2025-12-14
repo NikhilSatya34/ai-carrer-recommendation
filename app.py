@@ -151,20 +151,40 @@ if submit and role:
     """, unsafe_allow_html=True)
 
     # -------- FILTER DATA --------
+# ---------------- COMPANY RECOMMENDATION LOGIC ----------------
+
+base_filter = df[
+    (df["stream"] == stream) &
+    (df["department"] == department) &
+    (df["job_role"] == role)
+]
+
+# HIGH CGPA
+if cgpa >= 8.0:
+    high_df = base_filter[base_filter["company_level"] == "HIGH"].head(4)
+    mid_df  = base_filter[base_filter["company_level"] == "MID"].head(4)
+    low_df  = base_filter[base_filter["company_level"] == "LOW"].head(4)
+
+    result_df = pd.concat([high_df, mid_df, low_df]).head(12)
+
+# MID CGPA
+elif cgpa >= 6.5:
+    mid_df = base_filter[base_filter["company_level"] == "MID"].head(5)
+    low_df = base_filter[base_filter["company_level"] == "LOW"].head(4)
+
+    result_df = pd.concat([mid_df, low_df]).head(9)
+
+# LOW CGPA
+else:
+    result_df = base_filter[base_filter["company_level"] == "LOW"].head(5)
+
+# Fallback safety
+if result_df.empty:
+    st.warning("⚠️ Limited data found. Showing alternative companies.")
     result_df = df[
         (df["stream"] == stream) &
-        (df["department"] == department) &
         (df["job_role"] == role)
-    ]
-
-    if result_df.empty:
-        st.warning("⚠️ No exact matches found. Showing similar companies.")
-        result_df = df[
-            (df["stream"] == stream) &
-            (df["job_role"] == role)
-        ].head(6)
-    else:
-        result_df = result_df.head(9)
+    ].head(5)
 
     # -------- COMPANIES --------
     st.markdown("## 🏢 Recommended Companies")
@@ -193,4 +213,5 @@ st.markdown("""
 Built with ❤️ using Streamlit & Data Science
 </p>
 """, unsafe_allow_html=True)
+
 
