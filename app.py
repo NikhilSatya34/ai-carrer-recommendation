@@ -1,18 +1,12 @@
 import streamlit as st
 import pandas as pd
 
-# --------------------------------------------------
-# PAGE CONFIG
-# --------------------------------------------------
 st.set_page_config(
     page_title="AI Career Recommendation System",
     page_icon="🎓",
     layout="wide"
 )
 
-# --------------------------------------------------
-# LOAD CSV
-# --------------------------------------------------
 @st.cache_data
 def load_data():
     return pd.read_csv("Master_Companies_Technologies.csv")
@@ -199,3 +193,4 @@ st.markdown("""
 Built with ❤️ using Streamlit & Data Science
 </p>
 """, unsafe_allow_html=True)
+
