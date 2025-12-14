@@ -163,10 +163,11 @@ if st.session_state.submitted:
                 <span class="badge">{row.company_level} LEVEL</span>
                 <p style="margin-top:10px;">💼 <b>Role:</b> {row.job_role}</p>
                 <p>📍 <b>Locations:</b> {row.company_locations}</p>
-                <div class="tech">
-                    🛠️ <b>Technologies to Learn:</b><br>
-                    {row.technologies}
-                </div>
+                <p>🛠️ <b>Required Technologies:</b><br>
+                <span style="color:#38bdf8;">
+                {row.get("technologies", "Not specified")}
+                </span>
+                </p>
             </div>
             """, unsafe_allow_html=True)
 
@@ -177,3 +178,4 @@ st.markdown("""
 Built with ❤️ using Streamlit & Data Science
 </p>
 """, unsafe_allow_html=True)
+
