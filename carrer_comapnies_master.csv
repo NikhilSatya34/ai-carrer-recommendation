@@ -1,96 +1,49 @@
-Course_Level,Category,Department,Interested_Role,Company_Name,Company_Level,Company_Locations
+company_name,company_type,company_level,stream,department,role,locations,technologies
+Infosys,Service,MID,Engineering,Computer Science,Frontend Developer,Bangalore|Pune,HTML|CSS|JS|React
+TCS,Service,MID,Engineering,Computer Science,Frontend Developer,Chennai|Hyderabad,HTML|CSS|JS
+Wipro,Service,MID,Engineering,Computer Science,Backend Developer,Bangalore|Hyderabad,Python|APIs|SQL
+HCL,Service,MID,Engineering,Computer Science,Full Stack Developer,Noida|Chennai,React|Node|SQL
+Tech Mahindra,Service,LOW,Engineering,Computer Science,Frontend Developer,Pune,HTML|CSS|JS
 
-UG,Engineering,CSE,Frontend Developer,TCS,LOW,India
-UG,Engineering,CSE,Frontend Developer,Infosys,LOW,India
-UG,Engineering,CSE,Frontend Developer,Zoho,MID,Chennai
-UG,Engineering,CSE,Frontend Developer,Freshworks,MID,Chennai
-UG,Engineering,CSE,Frontend Developer,Google,HIGH,Bangalore|Hyderabad
+Google,Product,HIGH,Engineering,Computer Science,Frontend Developer,Bangalore,React|NextJS
+Microsoft,Product,HIGH,Engineering,Computer Science,Backend Developer,Hyderabad,Java|Spring
+Amazon,Product,HIGH,Engineering,Computer Science,Full Stack Developer,Hyderabad,React|Java|AWS
+Flipkart,Product,HIGH,Engineering,Computer Science,Data Engineer,Bangalore,SQL|Spark|Python
+Zoho,Product,MID,Engineering,Computer Science,Backend Developer,Chennai,Java|SQL
 
-UG,Engineering,CSE,Backend Developer,Wipro,LOW,India
-UG,Engineering,CSE,Backend Developer,Cognizant,LOW,India
-UG,Engineering,CSE,Backend Developer,Amazon,HIGH,Bangalore|Hyderabad
-UG,Engineering,CSE,Backend Developer,Microsoft,HIGH,Hyderabad
-UG,Engineering,CSE,Backend Developer,Flipkart,MID,Bangalore
+Freshworks,Product,MID,Engineering,Computer Science,Frontend Developer,Chennai,React|Redux
+Paytm,Startup,MID,Engineering,Computer Science,Backend Developer,Noida,Node|MongoDB
+Razorpay,Startup,HIGH,Engineering,Computer Science,Backend Developer,Bangalore,Java|Microservices
+CRED,Startup,HIGH,Engineering,Computer Science,Frontend Developer,Bangalore,React|TypeScript
+Swiggy,Startup,HIGH,Engineering,Computer Science,Data Analyst,Bangalore,SQL|Python
 
-UG,Engineering,CSE,Full Stack Developer,Accenture,LOW,India
-UG,Engineering,CSE,Full Stack Developer,Capgemini,LOW,India
-UG,Engineering,CSE,Full Stack Developer,Paytm,MID,Noida
-UG,Engineering,CSE,Full Stack Developer,Razorpay,MID,Bangalore
-UG,Engineering,CSE,Full Stack Developer,Adobe,HIGH,Noida
+L&T,Core,MID,Engineering,Civil,Site Engineer,Chennai|Mumbai,AutoCAD|Estimation
+DLF,Core,LOW,Engineering,Civil,Site Engineer,Delhi,AutoCAD
+AECOM,Core,HIGH,Engineering,Civil,Structural Engineer,Bangalore,ETABS|STAAD
 
-UG,Engineering,AIML,ML Engineer,TCS AI Labs,MID,India
-UG,Engineering,AIML,ML Engineer,Infosys NIA,MID,India
-UG,Engineering,AIML,ML Engineer,IBM,HIGH,Bangalore
-UG,Engineering,AIML,ML Engineer,Google AI,HIGH,Bangalore
-UG,Engineering,AIML,ML Engineer,Amazon ML,HIGH,Hyderabad
+Bosch,Core,MID,Engineering,Mechanical,Design Engineer,Bangalore,SolidWorks
+TVS Motors,Core,MID,Engineering,Mechanical,Production Engineer,Hosur,Manufacturing
+Tata Motors,Core,HIGH,Engineering,Mechanical,Mechanical Engineer,Pune,AutoCAD
 
-UG,Engineering,AIDS,Data Analyst,Genpact,LOW,India
-UG,Engineering,AIDS,Data Analyst,Mu Sigma,MID,Bangalore
-UG,Engineering,AIDS,Data Analyst,Deloitte,HIGH,Hyderabad|Bangalore
-UG,Engineering,AIDS,Data Analyst,EY,HIGH,India
+Siemens,Core,HIGH,Engineering,Electrical,Electrical Engineer,Pune,Power Systems
+ABB,Core,MID,Engineering,Electrical,Control Systems Engineer,Bangalore,PLC
+Schneider,Core,MID,Engineering,Electrical,Automation Engineer,Hyderabad,SCADA
 
-UG,Engineering,ECE,Embedded Engineer,Tata Elxsi,MID,Bangalore
-UG,Engineering,ECE,Embedded Engineer,Bosch,HIGH,Bangalore
-UG,Engineering,ECE,Embedded Engineer,Qualcomm,HIGH,Hyderabad
-UG,Engineering,ECE,Embedded Engineer,Siemens,MID,Bangalore
+Apollo Hospitals,Healthcare,HIGH,Medical,MBBS,Medical Officer,Hyderabad,Clinical Practice
+Fortis,Healthcare,MID,Medical,MBBS,Medical Officer,Bangalore,Patient Care
+AIIMS,Government,HIGH,Medical,MBBS,Surgeon,Delhi,Surgery
 
-UG,Engineering,EEE,Electrical Engineer,L&T,LOW,India
-UG,Engineering,EEE,Electrical Engineer,ABB,HIGH,Bangalore
-UG,Engineering,EEE,Electrical Engineer,Schneider Electric,HIGH,India
-UG,Engineering,EEE,Electrical Engineer,Siemens Energy,HIGH,India
+Dr Reddy's,Pharma,HIGH,Medical,Pharmacy,Clinical Researcher,Hyderabad,Clinical Trials
+Sun Pharma,Pharma,MID,Medical,Pharmacy,Drug Safety Associate,Mumbai,Pharmacovigilance
+Cipla,Pharma,MID,Medical,Pharmacy,Production Chemist,Pune,Manufacturing
 
-UG,Engineering,Mechanical,Design Engineer,Tata Motors,HIGH,Pune
-UG,Engineering,Mechanical,Design Engineer,Ashok Leyland,HIGH,Chennai
-UG,Engineering,Mechanical,Design Engineer,Hyundai,MID,Chennai
-UG,Engineering,Mechanical,Design Engineer,Bosch,HIGH,Bangalore
+Pfizer,Pharma,HIGH,Pharmacy,Pharm.D,Drug Safety Associate,Mumbai,Medical Coding
+Novartis,Pharma,HIGH,Pharmacy,M.Pharmacy,Clinical Research,Bangalore,Documentation
+Aurobindo,Pharma,MID,Pharmacy,B.Pharmacy,Quality Analyst,Hyderabad,QA|QC
 
-UG,Engineering,Civil,Site Engineer,L&T Construction,HIGH,India
-UG,Engineering,Civil,Site Engineer,Shapoorji Pallonji,MID,India
-UG,Engineering,Civil,Site Engineer,NCC Limited,LOW,India
-UG,Engineering,Civil,Structural Engineer,Afcons,MID,India
+Genpact,Service,MID,UG,B.Com,Account Executive,Hyderabad,Accounting
+Deloitte,Consulting,HIGH,PG,MBA,Business Analyst,Bangalore,Excel|Power BI
+EY,Consulting,HIGH,PG,MBA,HR Analyst,Gurgaon,HR Analytics
 
-UG,Medical,MBBS,Junior Doctor,Apollo Hospitals,HIGH,India
-UG,Medical,MBBS,Junior Doctor,AIIMS,HIGH,India
-UG,Medical,MBBS,Medical Officer,Government Hospitals,LOW,India
-UG,Medical,MBBS,Medical Officer,Fortis Healthcare,HIGH,India
-
-UG,Medical,Nursing,Staff Nurse,Apollo Hospitals,HIGH,India
-UG,Medical,Nursing,Staff Nurse,Manipal Hospitals,HIGH,India
-UG,Medical,Nursing,ICU Nurse,Fortis Hospitals,HIGH,India
-
-UG,Medical,Allied Health,Lab Technician,Dr Lal PathLabs,HIGH,India
-UG,Medical,Allied Health,Lab Technician,Thyrocare,HIGH,India
-UG,Medical,Allied Health,Radiology Technician,SRL Diagnostics,MID,India
-
-UG,Pharmacy,B.Pharm,Medical Representative,Cipla,HIGH,India
-UG,Pharmacy,B.Pharm,Medical Representative,Sun Pharma,HIGH,India
-UG,Pharmacy,B.Pharm,Clinical Research Associate,IQVIA,HIGH,India
-UG,Pharmacy,B.Pharm,Clinical Research Associate,ICON,MID,India
-
-PG,Pharmacy,M.Pharm,Drug Safety Associate,Accenture Life Sciences,HIGH,India
-PG,Pharmacy,M.Pharm,Drug Safety Associate,TCS Life Sciences,HIGH,India
-PG,Pharmacy,M.Pharm,Formulation Scientist,Dr Reddy’s,HIGH,Hyderabad
-PG,Pharmacy,M.Pharm,Formulation Scientist,Aurobindo Pharma,HIGH,Hyderabad
-
-UG,Science,B.Sc Physics,Lab Assistant,ISRO,HIGH,Bangalore
-UG,Science,B.Sc Physics,Lab Assistant,BARC,HIGH,Mumbai
-UG,Science,B.Sc Chemistry,Quality Analyst,Tata Chemicals,HIGH,India
-UG,Science,B.Sc Biology,Research Assistant,ICMR,HIGH,India
-
-PG,Science,M.Sc Physics,Research Scientist,DRDO,HIGH,India
-PG,Science,M.Sc Chemistry,Analytical Chemist,Sun Pharma,HIGH,India
-
-UG,Commerce,B.Com,Account Executive,KPMG,HIGH,India
-UG,Commerce,B.Com,Audit Assistant,Deloitte,HIGH,India
-PG,Commerce,M.Com,Financial Analyst,Goldman Sachs,HIGH,Bangalore
-
-UG,Management,BBA,Business Executive,Byju’s,MID,India
-UG,Management,BBA,Marketing Executive,Zomato,MID,India
-PG,Management,MBA,Business Analyst,McKinsey,HIGH,India
-PG,Management,MBA,HR Executive,Infosys,HIGH,India
-PG,Management,MBA,Operations Manager,Amazon,HIGH,India
-
-UG,IT,BCA,Software Developer,HCL,LOW,India
-UG,IT,BCA,Software Developer,Tech Mahindra,LOW,India
-PG,IT,MCA,Software Engineer,Infosys,HIGH,India
-PG,IT,MCA,Software Engineer,Accenture,HIGH,India
+Infosys,Service,MID,PG,MCA,Software Engineer,Bangalore,Java|SQL
+TCS,Service,MID,PG,MCA,System Analyst,Chennai,System Design
