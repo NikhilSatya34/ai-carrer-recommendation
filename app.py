@@ -1,182 +1,78 @@
 import streamlit as st
 import pandas as pd
 
-# ---------------- PAGE CONFIG ----------------
+# Page config (Professional look)
 st.set_page_config(
-    page_title="AI Career Recommendation System",
+    page_title="Career Recommendation System",
     page_icon="🎓",
     layout="wide"
 )
 
-# ---------------- LOAD DATA ----------------
-@st.cache_data
-def load_data():
-    return pd.read_csv("Master_Companies_Technologies.csv")
+# Load CSV (DO NOT MODIFY)
+df = pd.read_csv("Master_Comapnies_Technologies.csv")
 
-df = load_data()
+st.title("🎓 Career Recommendation System")
+st.write("Fill the form below to get company recommendations based on your profile.")
 
-# ---------------- SESSION STATE ----------------
-if "stream_loaded" not in st.session_state:
-    st.session_state.stream_loaded = False
-if "dept_loaded" not in st.session_state:
-    st.session_state.dept_loaded = False
-if "submitted" not in st.session_state:
-    st.session_state.submitted = False
+st.divider()
 
-# ---------------- STYLES ----------------
-st.markdown("""
-<style>
-body { background:#020617; }
-.card {
-    background:#020617;
-    border:1px solid #1e293b;
-    border-radius:16px;
-    padding:20px;
-    margin-bottom:18px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.4);
-}
-.title { font-size:38px; font-weight:800; color:#e5e7eb; }
-.subtitle { color:#94a3b8; font-size:16px; }
-.badge {
-    display:inline-block;
-    padding:6px 14px;
-    border-radius:999px;
-    font-size:13px;
-    border:1px solid #334155;
-    color:#38bdf8;
-}
-.tech {
-    background:#020617;
-    border:1px solid #334155;
-    border-radius:12px;
-    padding:10px;
-    margin-top:8px;
-    color:#e5e7eb;
-}
-</style>
-""", unsafe_allow_html=True)
-
-# ---------------- HEADER ----------------
-st.markdown("""
-<div class="card">
-  <div class="title">🎓 AI Career Recommendation System</div>
-  <div class="subtitle">Stream → Department → Role based career guidance</div>
-</div>
-""", unsafe_allow_html=True)
-
-st.markdown("<br>", unsafe_allow_html=True)
-
-# ---------------- STUDENT FORM ----------------
+# ---------------- FORM SECTION ----------------
 with st.form("career_form"):
+    col1, col2, col3 = st.columns(3)
 
-    st.markdown("## 👤 Student Profile")
+    with col1:
+        stream = st.selectbox(
+            "Stream",
+            options=["Select Stream", "Engineering"]
+        )
 
-    # ---------- STREAM ----------
-    stream = st.selectbox(
-        "🎓 Select Stream",
-        sorted(df["stream"].unique())
-    )
-
-    load_dept = st.form_submit_button("➡️ Load Departments")
-
-    if load_dept:
-        st.session_state.stream_loaded = True
-        st.session_state.dept_loaded = False
-        st.session_state.submitted = False
-
-    # ---------- DEPARTMENT ----------
-    if st.session_state.stream_loaded:
-        departments = sorted(df[df["stream"] == stream]["department"].unique())
-
+    with col2:
+        departments = sorted(df["eligible_departments"].dropna().unique())
         department = st.selectbox(
-            "🏫 Select Department",
-            departments
+            "Department",
+            options=["Select Department"] + departments
         )
 
-        load_roles = st.form_submit_button("➡️ Load Roles")
-
-        if load_roles:
-            st.session_state.dept_loaded = True
-            st.session_state.submitted = False
-
-    # ---------- ROLE ----------
-    if st.session_state.stream_loaded and st.session_state.dept_loaded:
-        roles = sorted(
-            df[
-                (df["stream"] == stream) &
-                (df["department"] == department)
-            ]["job_role"].unique()
-        )
+    with col3:
+        if department != "Select Department":
+            roles = sorted(
+                df[df["eligible_departments"] == department]["job_role"].dropna().unique()
+            )
+        else:
+            roles = []
 
         role = st.selectbox(
-            "💼 Select Interested Role",
-            roles
+            "Interested Role",
+            options=["Select Role"] + roles
         )
 
-        cgpa = st.slider("📊 CGPA / Score", 5.0, 10.0, 7.0, 0.1)
-        internship = st.selectbox("🧑‍💻 Internship Experience", ["Yes", "No"])
+    submit = st.form_submit_button("Find Companies")
 
-        submit = st.form_submit_button("🚀 Get Career Recommendations")
-
-        if submit:
-            st.session_state.submitted = True
-
-# ---------------- RESULTS ----------------
-if st.session_state.submitted:
-
-    st.markdown("<br>", unsafe_allow_html=True)
-
-    # -------- PROFILE CARD --------
-    st.markdown(f"""
-    <div class="card">
-        <h3>👤 Student Profile</h3>
-        <p><b>Stream:</b> {stream}</p>
-        <p><b>Department:</b> {department}</p>
-        <p><b>Role:</b> {role}</p>
-        <p><b>CGPA:</b> {cgpa}</p>
-        <p><b>Internship:</b> {internship}</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # -------- FILTER COMPANIES --------
-    result_df = df[
-        (df["stream"] == stream) &
-        (df["department"] == department) &
-        (df["job_role"] == role)
-    ]
-
-    if result_df.empty:
-        st.warning("⚠️ No exact matches found. Showing similar companies.")
-        result_df = df[df["stream"] == stream].head(6)
+# ---------------- RESULT SECTION ----------------
+if submit:
+    if department == "Select Department" or role == "Select Role":
+        st.warning("⚠️ Please select Department and Role")
     else:
-        result_df = result_df.head(9)
+        result_df = df[
+            (df["eligible_departments"] == department) &
+            (df["job_role"] == role)
+        ].copy()
 
-    # -------- COMPANY CARDS --------
-    st.markdown("## 🏢 Recommended Companies")
+        if result_df.empty:
+            st.info("No companies found for your selection.")
+        else:
+            # Handle missing technologies
+            result_df["technologies"] = result_df["technologies"].fillna("Not specified")
 
-    cols = st.columns(3)
-    for i, (_, row) in enumerate(result_df.iterrows()):
-        with cols[i % 3]:
-            st.markdown(f"""
-            <div class="card">
-                <h3>🏢 {row.company_name}</h3>
-                <span class="badge">{row.company_level} LEVEL</span>
-                <p style="margin-top:10px;">💼 <b>Role:</b> {row.job_role}</p>
-                <p>📍 <b>Locations:</b> {row.company_locations}</p>
-                <p>🛠️ <b>Required Technologies:</b><br>
-                <span style="color:#38bdf8;">
-                {row.get("technologies", "Not specified")}
-                </span>
-                </p>
-            </div>
-            """, unsafe_allow_html=True)
+            st.subheader("📊 Recommended Companies")
 
-# ---------------- FOOTER ----------------
-st.markdown("""
-<br><br>
-<p style="text-align:center;color:#64748b;">
-Built with ❤️ using Streamlit & Data Science
-</p>
-""", unsafe_allow_html=True)
-
-
+            st.dataframe(
+                result_df[[
+                    "company_name",
+                    "job_role",
+                    "package_lpa",
+                    "company_locations",
+                    "technologies"
+                ]],
+                use_container_width=True
+            )
