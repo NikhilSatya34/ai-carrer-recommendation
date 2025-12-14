@@ -1,6 +1,46 @@
 import streamlit as st
 import pandas as pd
 
+def filter_companies_by_cgpa(df, stream, department, role, cgpa, mode="recommended"):
+    """
+    mode = "recommended"  -> exact role
+    mode = "alternate"    -> other roles from same department
+    """
+
+    base_df = df[
+        (df["stream"] == stream) &
+        (df["department"] == department)
+    ]
+
+    if mode == "recommended":
+        role_df = base_df[base_df["job_role"] == role]
+    else:
+        role_df = base_df[base_df["job_role"] != role]
+
+    # ---------- LOW CGPA ----------
+    if cgpa < 6.5:
+        result = role_df[role_df["company_level"] == "STARTUP"].head(5)
+
+    # ---------- MID CGPA ----------
+    elif 6.5 <= cgpa < 8.5:
+        mid = role_df[role_df["company_level"] == "MID"].head(5)
+        startup = role_df[role_df["company_level"] == "STARTUP"].head(4)
+        result = pd.concat([mid, startup])
+
+    # ---------- HIGH CGPA ----------
+    else:
+        high = role_df[role_df["company_level"] == "HIGH"].head(5)
+        mid = role_df[role_df["company_level"] == "MID"].head(4)
+        startup = role_df[role_df["company_level"] == "STARTUP"].head(3)
+        result = pd.concat([high, mid, startup])
+
+    # ---------- FALLBACK ----------
+    if result.empty:
+        result = base_df.head(6)
+
+    return result.drop_duplicates("company_name")
+
+
 st.set_page_config(
     page_title="AI Career Recommendation System",
     page_icon="🎓",
@@ -150,90 +190,48 @@ if submit and role:
     </div>
     """, unsafe_allow_html=True)
 
-    # -------- FILTER DATA --------
-# ---------------- COMPANY RECOMMENDATION LOGIC ----------------
+    
+    result_df = filter_companies_by_cgpa(
+        df, stream, department, role, cgpa, mode="recommended"
+    )
 
-base_filter = df[
-    (df["stream"] == stream) &
-    (df["department"] == department) &
-    (df["job_role"] == role)
-]
-
-# HIGH CGPA
-if cgpa >= 8.0:
-    high_df = base_filter[base_filter["company_level"] == "HIGH"].head(4)
-    mid_df  = base_filter[base_filter["company_level"] == "MID"].head(4)
-    low_df  = base_filter[base_filter["company_level"] == "LOW"].head(4)
-
-    result_df = pd.concat([high_df, mid_df, low_df]).head(12)
-
-# MID CGPA
-elif cgpa >= 6.5:
-    mid_df = base_filter[base_filter["company_level"] == "MID"].head(5)
-    low_df = base_filter[base_filter["company_level"] == "LOW"].head(4)
-
-    result_df = pd.concat([mid_df, low_df]).head(9)
-
-# LOW CGPA
-else:
-    result_df = base_filter[base_filter["company_level"] == "LOW"].head(5)
-
-# Fallback safety
-if result_df.empty:
-    st.warning("⚠️ Limited data found. Showing alternative companies.")
-    result_df = df[
-        (df["stream"] == stream) &
-        (df["job_role"] == role)
-    ].head(5)
-
-    # -------- COMPANIES --------
     st.markdown("## 🏢 Recommended Companies")
 
     cols = st.columns(3)
     for i, (_, row) in enumerate(result_df.iterrows()):
         with cols[i % 3]:
             techs = row["technologies"] if pd.notna(row["technologies"]) else "Not specified"
-
             st.markdown(f"""
             <div class="card">
                 <div class="company-title">🏢 {row.company_name}</div>
-                <span class="badge">{row.company_level} LEVEL</span>
-                <p style="margin-top:10px;">💼 <b>Role:</b> {row.job_role}</p>
-                <p>📍 <b>Locations:</b> {row.company_locations}</p>
-                <p>🛠️ <b>Required Technologies:</b><br>{techs}</p>
+                <span class="badge">{row.company_level}</span>
+                <p><b>Role:</b> {row.job_role}</p>
+                <p><b>Location:</b> {row.company_locations}</p>
+                <p><b>Technologies:</b><br>{techs}</p>
             </div>
             """, unsafe_allow_html=True)
+
     # -------------------- ALTERNATE COMPANIES --------------------
 
-st.markdown("## 🔁 Alternate Companies from Your Department")
+alt_df = filter_companies_by_cgpa(
+    df, stream, department, role, cgpa, mode="alternate"
+)
 
-alternate_df = df[
-    (df["stream"] == stream) &
-    (df["department"] == department)
-]
+st.markdown("## 🔁 Alternate Companies (Same Department)")
 
-# Remove already shown companies
-alternate_df = alternate_df[
-    ~alternate_df["company_name"].isin(result_df["company_name"])
-]
-
-if alternate_df.empty:
-    st.info("No additional companies found for this department.")
-else:
-    cols = st.columns(3)
-    for i, (_, row) in enumerate(alternate_df.iterrows()):
-        with cols[i % 3]:
-            techs = row["technologies"] if pd.notna(row["technologies"]) else "Not specified"
-
-            st.markdown(f"""
-            <div class="card">
-                <div class="company-title">🏢 {row.company_name}</div>
-                <span class="badge">{row.company_level} LEVEL</span>
-                <p>💼 <b>Role:</b> {row.job_role}</p>
-                <p>📍 <b>Location:</b> {row.company_locations}</p>
-                <p>🛠 <b>Technologies:</b><br>{techs}</p>
-            </div>
-            """, unsafe_allow_html=True)
+cols = st.columns(3)
+for i, (_, row) in enumerate(alt_df.iterrows()):
+    with cols[i % 3]:
+        techs = row["technologies"] if pd.notna(row["technologies"]) else "Not specified"
+        st.markdown(f"""
+        <div class="card">
+            <div class="company-title">🏢 {row.company_name}</div>
+            <span class="badge">{row.company_level}</span>
+            <p><b>Alternate Role:</b> {row.job_role}</p>
+            <p><b>Location:</b> {row.company_locations}</p>
+            <p><b>Technologies:</b><br>{techs}</p>
+        </div>
+        """, unsafe_allow_html=True)
 
 # --------------------------------------------------
 # FOOTER
@@ -244,6 +242,7 @@ st.markdown("""
 Built with ❤️ using Streamlit & Data Science
 </p>
 """, unsafe_allow_html=True)
+
 
 
 
