@@ -9,7 +9,7 @@ st.set_page_config(
 
 # ================= LOAD CSVs =================
 career_df = pd.read_csv("career_master.csv")
-company_df = pd.read_csv("career_companies_master.csv")
+company_df = pd.read_csv("career_companies_master.csvcsv")
 
 # ================= SESSION STATE =================
 if "submitted" not in st.session_state:
@@ -157,3 +157,4 @@ st.markdown(
     "<p style='text-align:center;color:gray;'>Built with ❤️ using Data Science & AI</p>",
     unsafe_allow_html=True
 )
+
