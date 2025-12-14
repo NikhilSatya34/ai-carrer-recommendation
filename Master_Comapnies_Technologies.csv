@@ -4,11 +4,11 @@ Engineering,AIDS,Data Scientist,STARTUP,Mu Sigma,Bangalore,"Python,Statistics,Pa
 Engineering,AIDS,ML Engineer,STARTUP,SigTuple,Bangalore,"Python,Scikit-learn,TensorFlow,Model Deployment"
 Engineering,AIDS,AI Engineer,STARTUP,Mad Street Den,Chennai,"Python,Machine Learning,Deep Learning,TensorFlow,PyTorch"
 Engineering,AIDS,Business Analyst,STARTUP,Tiger Analytics,Chennai,
-Engineering,AIDS,Data Analyst,Mid,Accenture,Hyderabad,"Python,SQL,Excel,Power BI,Tableau"
-Engineering,AIDS,Data Scientist,Mid,TCS,Bangalore,"Python,Statistics,Pandas,Machine Learning,SQL"
-Engineering,AIDS,ML Engineer,Mid,Infosys,Bangalore,"Python,Scikit-learn,TensorFlow,Model Deployment"
-Engineering,AIDS,AI Engineer,Mid,Wipro,Hyderabad,"Python,Machine Learning,Deep Learning,TensorFlow,PyTorch"
-Engineering,AIDS,Business Analyst,Mid,Cognizant,Chennai,
+Engineering,AIDS,Data Analyst,MID,Accenture,Hyderabad,"Python,SQL,Excel,Power BI,Tableau"
+Engineering,AIDS,Data Scientist,MID,TCS,Bangalore,"Python,Statistics,Pandas,Machine Learning,SQL"
+Engineering,AIDS,ML Engineer,MID,Infosys,Bangalore,"Python,Scikit-learn,TensorFlow,Model Deployment"
+Engineering,AIDS,AI Engineer,MID,Wipro,Hyderabad,"Python,Machine Learning,Deep Learning,TensorFlow,PyTorch"
+Engineering,AIDS,Business Analyst,MID,Cognizant,Chennai,
 Engineering,AIDS,Data Scientist,HIGH,Google,Bangalore,"Python,Statistics,Pandas,Machine Learning,SQL"
 Engineering,AIDS,ML Engineer,HIGH,Amazon,Hyderabad,"Python,Scikit-learn,TensorFlow,Model Deployment"
 Engineering,AIDS,AI Engineer,HIGH,Microsoft,Hyderabad,"Python,Machine Learning,Deep Learning,TensorFlow,PyTorch"
@@ -17,13 +17,13 @@ Engineering,AIDS,Research Scientist,HIGH,IBM Research,Bangalore,
 Engineering,AIML,ML Engineer,STARTUP,Arya.ai,Bangalore,"Python,Scikit-learn,TensorFlow,Model Deployment"
 Engineering,AIML,AI Engineer,STARTUP,Haptik,Mumbai,"Python,Machine Learning,Deep Learning,TensorFlow,PyTorch"
 Engineering,AIML,Deep Learning Engineer,STARTUP,Niramai,Bangalore,
-Engineering,AIML,NLP Engineer,STARTUP,YelLOW.ai,Bangalore,
+Engineering,AIML,NLP Engineer,STARTUP,Yellow.ai,Bangalore,
 Engineering,AIML,Computer Vision Engineer,STARTUP,Mad Street Den,Chennai,
-Engineering,AIML,ML Engineer,Mid,Wipro,Bangalore,"Python,Scikit-learn,TensorFlow,Model Deployment"
-Engineering,AIML,AI Engineer,Mid,Infosys,Hyderabad,"Python,Machine Learning,Deep Learning,TensorFlow,PyTorch"
-Engineering,AIML,Deep Learning Engineer,Mid,TCS,Chennai,
-Engineering,AIML,NLP Engineer,Mid,Accenture,Bangalore,
-Engineering,AIML,Computer Vision Engineer,Mid,Cognizant,Pune,
+Engineering,AIML,ML Engineer,MID,Wipro,Bangalore,"Python,Scikit-learn,TensorFlow,Model Deployment"
+Engineering,AIML,AI Engineer,MID,Infosys,Hyderabad,"Python,Machine Learning,Deep Learning,TensorFlow,PyTorch"
+Engineering,AIML,Deep Learning Engineer,MID,TCS,Chennai,
+Engineering,AIML,NLP Engineer,MID,Accenture,Bangalore,
+Engineering,AIML,Computer Vision Engineer,MID,Cognizant,Pune,
 Engineering,AIML,ML Engineer,HIGH,Google,Bangalore,"Python,Scikit-learn,TensorFlow,Model Deployment"
 Engineering,AIML,AI Engineer,HIGH,Microsoft,Hyderabad,"Python,Machine Learning,Deep Learning,TensorFlow,PyTorch"
 Engineering,AIML,Deep Learning Engineer,HIGH,Amazon,Hyderabad,
@@ -34,11 +34,11 @@ Engineering,CSE,Backend Developer,STARTUP,Razorpay,Bangalore,"Python,Java,APIs,D
 Engineering,CSE,Full Stack Developer,STARTUP,Cred,Bangalore,"HTML,CSS,JavaScript,Python,SQL"
 Engineering,CSE,Software Engineer,STARTUP,Groww,Bangalore,"DSA,OOPS,Python,Java,Git"
 Engineering,CSE,DevOps Engineer,STARTUP,Postman,Bangalore,"CI/CD,Docker,Kubernetes,AWS,Linux"
-Engineering,CSE,Frontend Developer,Mid,Infosys,Bangalore,"HTML,CSS,JavaScript,React"
-Engineering,CSE,Backend Developer,Mid,TCS,Hyderabad,"Python,Java,APIs,Databases,Microservices"
-Engineering,CSE,Full Stack Developer,Mid,Wipro,Bangalore,"HTML,CSS,JavaScript,Python,SQL"
-Engineering,CSE,Software Engineer,Mid,Cognizant,Chennai,"DSA,OOPS,Python,Java,Git"
-Engineering,CSE,DevOps Engineer,Mid,Accenture,Pune,"CI/CD,Docker,Kubernetes,AWS,Linux"
+Engineering,CSE,Frontend Developer,MID,Infosys,Bangalore,"HTML,CSS,JavaScript,React"
+Engineering,CSE,Backend Developer,MID,TCS,Hyderabad,"Python,Java,APIs,Databases,Microservices"
+Engineering,CSE,Full Stack Developer,MID,Wipro,Bangalore,"HTML,CSS,JavaScript,Python,SQL"
+Engineering,CSE,Software Engineer,MID,Cognizant,Chennai,"DSA,OOPS,Python,Java,Git"
+Engineering,CSE,DevOps Engineer,MID,Accenture,Pune,"CI/CD,Docker,Kubernetes,AWS,Linux"
 Engineering,CSE,Frontend Developer,HIGH,Google,Bangalore,"HTML,CSS,JavaScript,React"
 Engineering,CSE,Backend Developer,HIGH,Amazon,Hyderabad,"Python,Java,APIs,Databases,Microservices"
 Engineering,CSE,Full Stack Developer,HIGH,Microsoft,Hyderabad,"HTML,CSS,JavaScript,Python,SQL"
@@ -49,11 +49,11 @@ Engineering,ECE,VLSI Engineer,STARTUP,Invecas,Hyderabad,"VLSI,Verilog,VHDL,ASIC 
 Engineering,ECE,IoT Engineer,STARTUP,Stellapps,Bangalore,
 Engineering,ECE,Network Engineer,STARTUP,Tejas Networks,Bangalore,"Networking,CCNA,Routing,Switching,Firewall"
 Engineering,ECE,Signal Processing Engineer,STARTUP,Saankhya Labs,Bangalore,
-Engineering,ECE,Embedded Engineer,Mid,L&T Technology Services,Bangalore,"C,Embedded Systems,RTOS,Microcontrollers"
-Engineering,ECE,VLSI Engineer,Mid,Tata Elxsi,Bangalore,"VLSI,Verilog,VHDL,ASIC Design,Physical Design"
-Engineering,ECE,IoT Engineer,Mid,Bosch,Bangalore,
-Engineering,ECE,Network Engineer,Mid,Cisco,Bangalore,"Networking,CCNA,Routing,Switching,Firewall"
-Engineering,ECE,Signal Processing Engineer,Mid,Qualcomm,Hyderabad,
+Engineering,ECE,Embedded Engineer,MID,L&T Technology Services,Bangalore,"C,Embedded Systems,RTOS,Microcontrollers"
+Engineering,ECE,VLSI Engineer,MID,Tata Elxsi,Bangalore,"VLSI,Verilog,VHDL,ASIC Design,Physical Design"
+Engineering,ECE,IoT Engineer,MID,Bosch,Bangalore,
+Engineering,ECE,Network Engineer,MID,Cisco,Bangalore,"Networking,CCNA,Routing,Switching,Firewall"
+Engineering,ECE,Signal Processing Engineer,MID,Qualcomm,Hyderabad,
 Engineering,ECE,Embedded Engineer,HIGH,Intel,Bangalore,"C,Embedded Systems,RTOS,Microcontrollers"
 Engineering,ECE,VLSI Engineer,HIGH,AMD,Bangalore,"VLSI,Verilog,VHDL,ASIC Design,Physical Design"
 Engineering,ECE,IoT Engineer,HIGH,Samsung R&D,Bangalore,
@@ -64,11 +64,11 @@ Engineering,EEE,Power Systems Engineer,STARTUP,Ampere Vehicles,Chennai,
 Engineering,EEE,Control Systems Engineer,STARTUP,Gridbots,Ahmedabad,
 Engineering,EEE,PLC Engineer,STARTUP,Addverb,Noida,
 Engineering,EEE,Automation Engineer,STARTUP,Festo India,Bangalore,
-Engineering,EEE,Electrical Engineer,Mid,ABB India,Bangalore,"Power Systems,Electrical Machines,PLC,SCADA"
-Engineering,EEE,Power Systems Engineer,Mid,Schneider Electric,Bangalore,
-Engineering,EEE,Control Systems Engineer,Mid,L&T,Mumbai,
-Engineering,EEE,PLC Engineer,Mid,Siemens,Pune,
-Engineering,EEE,Automation Engineer,Mid,Rockwell Automation,Bangalore,
+Engineering,EEE,Electrical Engineer,MID,ABB India,Bangalore,"Power Systems,Electrical Machines,PLC,SCADA"
+Engineering,EEE,Power Systems Engineer,MID,Schneider Electric,Bangalore,
+Engineering,EEE,Control Systems Engineer,MID,L&T,Mumbai,
+Engineering,EEE,PLC Engineer,MID,Siemens,Pune,
+Engineering,EEE,Automation Engineer,MID,Rockwell Automation,Bangalore,
 Engineering,EEE,Electrical Engineer,HIGH,Hitachi Energy,Vadodara,"Power Systems,Electrical Machines,PLC,SCADA"
 Engineering,EEE,Power Systems Engineer,HIGH,GE Power,Noida,
 Engineering,EEE,Control Systems Engineer,HIGH,Honeywell,Bangalore,
@@ -79,11 +79,11 @@ Engineering,Mechanical,Production Engineer,STARTUP,Ola Electric,Bangalore,
 Engineering,Mechanical,Manufacturing Engineer,STARTUP,TVS iQube,Chennai,
 Engineering,Mechanical,Quality Engineer,STARTUP,ReNew Power,Gurgaon,
 Engineering,Mechanical,Maintenance Engineer,STARTUP,BluSmart,Delhi,
-Engineering,Mechanical,Design Engineer,Mid,TVS Motors,Chennai,
-Engineering,Mechanical,Production Engineer,Mid,Ashok Leyland,Chennai,
-Engineering,Mechanical,Manufacturing Engineer,Mid,Mahindra,Pune,
-Engineering,Mechanical,Quality Engineer,Mid,Bosch,Bangalore,
-Engineering,Mechanical,Maintenance Engineer,Mid,L&T Heavy Engineering,Hazira,
+Engineering,Mechanical,Design Engineer,MID,TVS Motors,Chennai,
+Engineering,Mechanical,Production Engineer,MID,Ashok Leyland,Chennai,
+Engineering,Mechanical,Manufacturing Engineer,MID,Mahindra,Pune,
+Engineering,Mechanical,Quality Engineer,MID,Bosch,Bangalore,
+Engineering,Mechanical,Maintenance Engineer,MID,L&T Heavy Engineering,Hazira,
 Engineering,Mechanical,Design Engineer,HIGH,Siemens,Pune,
 Engineering,Mechanical,Production Engineer,HIGH,GE,Bangalore,
 Engineering,Mechanical,Manufacturing Engineer,HIGH,Toyota,Bangalore,
@@ -94,11 +94,11 @@ Engineering,Civil,Structural Engineer,STARTUP,UrbanFrame,Bangalore,
 Engineering,Civil,Planning Engineer,STARTUP,Brick&Bolt,Bangalore,
 Engineering,Civil,Quantity Surveyor,STARTUP,Infra.Market,Mumbai,
 Engineering,Civil,Construction Manager,STARTUP,Square Yards,Gurgaon,
-Engineering,Civil,Site Engineer,Mid,Larsen & Toubro,Pan India,
-Engineering,Civil,Structural Engineer,Mid,Shapoorji Pallonji,Mumbai,
-Engineering,Civil,Planning Engineer,Mid,Afcons,Mumbai,
-Engineering,Civil,Quantity Surveyor,Mid,Tata Projects,Hyderabad,
-Engineering,Civil,Construction Manager,Mid,Sobha,Bangalore,
+Engineering,Civil,Site Engineer,MID,Larsen & Toubro,Pan India,
+Engineering,Civil,Structural Engineer,MID,Shapoorji Pallonji,Mumbai,
+Engineering,Civil,Planning Engineer,MID,Afcons,Mumbai,
+Engineering,Civil,Quantity Surveyor,MID,Tata Projects,Hyderabad,
+Engineering,Civil,Construction Manager,MID,Sobha,Bangalore,
 Engineering,Civil,Site Engineer,HIGH,AECOM,Gurgaon,
 Engineering,Civil,Structural Engineer,HIGH,Jacobs,Bangalore,
 Engineering,Civil,Planning Engineer,HIGH,Bechtel,Delhi,
@@ -109,11 +109,11 @@ Medical,MBBS,Medical Officer,STARTUP,Practo,Bangalore,
 Medical,MBBS,Junior Doctor,STARTUP,DocsApp,Bangalore,
 Medical,MBBS,Resident Doctor,STARTUP,MediBuddy,Bangalore,
 Medical,MBBS,Healthcare Analyst,STARTUP,HealthifyMe,Bangalore,
-Medical,MBBS,Clinical Assistant,Mid,Apollo Hospitals,Chennai,
-Medical,MBBS,Medical Officer,Mid,Fortis,Delhi,
-Medical,MBBS,Junior Doctor,Mid,Manipal Hospitals,Bangalore,
-Medical,MBBS,Resident Doctor,Mid,Aster DM,Hyderabad,
-Medical,MBBS,Healthcare Analyst,Mid,Max Healthcare,Delhi,
+Medical,MBBS,Clinical Assistant,MID,Apollo Hospitals,Chennai,
+Medical,MBBS,Medical Officer,MID,Fortis,Delhi,
+Medical,MBBS,Junior Doctor,MID,Manipal Hospitals,Bangalore,
+Medical,MBBS,Resident Doctor,MID,Aster DM,Hyderabad,
+Medical,MBBS,Healthcare Analyst,MID,Max Healthcare,Delhi,
 Medical,MBBS,Clinical Assistant,HIGH,AIIMS,Delhi,
 Medical,MBBS,Medical Officer,HIGH,Medanta,Gurgaon,
 Medical,MBBS,Junior Doctor,HIGH,CMC Vellore,Vellore,
@@ -124,11 +124,11 @@ Medical,Nursing,Clinical Nurse,STARTUP,Care24,Mumbai,
 Medical,Nursing,Nursing Assistant,STARTUP,HealthCare atHOME,Delhi,
 Medical,Nursing,Home Care Nurse,STARTUP,Nightingales,Bangalore,
 Medical,Nursing,ICU Nurse,STARTUP,Apollo HomeCare,Chennai,
-Medical,Nursing,Staff Nurse,Mid,Apollo Hospitals,Chennai,
-Medical,Nursing,Clinical Nurse,Mid,Fortis,Delhi,
-Medical,Nursing,Nursing Assistant,Mid,Manipal Hospitals,Bangalore,
-Medical,Nursing,Home Care Nurse,Mid,Aster DM,Hyderabad,
-Medical,Nursing,ICU Nurse,Mid,Max Healthcare,Delhi,
+Medical,Nursing,Staff Nurse,MID,Apollo Hospitals,Chennai,
+Medical,Nursing,Clinical Nurse,MID,Fortis,Delhi,
+Medical,Nursing,Nursing Assistant,MID,Manipal Hospitals,Bangalore,
+Medical,Nursing,Home Care Nurse,MID,Aster DM,Hyderabad,
+Medical,Nursing,ICU Nurse,MID,Max Healthcare,Delhi,
 Medical,Nursing,Staff Nurse,HIGH,AIIMS,Delhi,
 Medical,Nursing,Clinical Nurse,HIGH,CMC Vellore,Vellore,
 Medical,Nursing,Nursing Assistant,HIGH,Johns Hopkins India,Hyderabad,
@@ -139,11 +139,11 @@ Medical,Physiotherapy,Rehab Specialist,STARTUP,FitMe,Bangalore,
 Medical,Physiotherapy,Sports Therapist,STARTUP,Cult Fit,Bangalore,
 Medical,Physiotherapy,Orthopedic Assistant,STARTUP,Cure.fit Rehab,Bangalore,
 Medical,Physiotherapy,Clinical Physiotherapist,STARTUP,Healthify Physio,Bangalore,
-Medical,Physiotherapy,Physiotherapist,Mid,Apollo Hospitals,Chennai,
-Medical,Physiotherapy,Rehab Specialist,Mid,Fortis,Delhi,
-Medical,Physiotherapy,Sports Therapist,Mid,Manipal Hospitals,Bangalore,
-Medical,Physiotherapy,Orthopedic Assistant,Mid,Aster DM,Hyderabad,
-Medical,Physiotherapy,Clinical Physiotherapist,Mid,Max Healthcare,Delhi,
+Medical,Physiotherapy,Physiotherapist,MID,Apollo Hospitals,Chennai,
+Medical,Physiotherapy,Rehab Specialist,MID,Fortis,Delhi,
+Medical,Physiotherapy,Sports Therapist,MID,Manipal Hospitals,Bangalore,
+Medical,Physiotherapy,Orthopedic Assistant,MID,Aster DM,Hyderabad,
+Medical,Physiotherapy,Clinical Physiotherapist,MID,Max Healthcare,Delhi,
 Medical,Physiotherapy,Physiotherapist,HIGH,AIIMS,Delhi,
 Medical,Physiotherapy,Rehab Specialist,HIGH,CMC Vellore,Vellore,
 Medical,Physiotherapy,Sports Therapist,HIGH,Olympic Rehab India,Delhi,
@@ -151,51 +151,52 @@ Medical,Physiotherapy,Orthopedic Assistant,HIGH,Johns Hopkins India,Hyderabad,
 Medical,Physiotherapy,Clinical Physiotherapist,HIGH,WHO India,Delhi,
 Pharma,B.Pharmacy,Drug Safety Associate,STARTUP,PharmaStart,Bangalore,
 Pharma,B.Pharmacy,Medical Coder,STARTUP,CorroHealth,Hyderabad,
-Pharma,B.Pharmacy,Quality Analyst,Mid,Cipla,Mumbai,
-Pharma,B.Pharmacy,Production Chemist,Mid,Dr Reddy’s,Hyderabad,
+Pharma,B.Pharmacy,Quality Analyst,MID,Cipla,Mumbai,
+Pharma,B.Pharmacy,Production Chemist,MID,Dr Reddy’s,Hyderabad,
 Pharma,B.Pharmacy,Regulatory Affairs,HIGH,Sun Pharma,Mumbai,
 Pharma,M.Pharmacy,Clinical Research Associate,STARTUP,IQVIA Start,Bangalore,
 Pharma,M.Pharmacy,Formulation Scientist,STARTUP,PharmaNest,Hyderabad,
-Pharma,M.Pharmacy,Research Scientist,Mid,Aurobindo,Hyderabad,
-Pharma,M.Pharmacy,Drug Safety Officer,Mid,Pfizer,Chennai,
+Pharma,M.Pharmacy,Research Scientist,MID,Aurobindo,Hyderabad,
+Pharma,M.Pharmacy,Drug Safety Officer,MID,Pfizer,Chennai,
 Pharma,M.Pharmacy,Clinical Trial Manager,HIGH,Novartis,Hyderabad,
 Pharma,D.Pharmacy,Pharmacist,STARTUP,MedPlus,Hyderabad,
 Pharma,D.Pharmacy,Hospital Pharmacist,STARTUP,Apollo Pharmacy,Chennai,
-Pharma,D.Pharmacy,Retail Pharmacist,Mid,1mg,Bangalore,
-Pharma,D.Pharmacy,Dispensing Pharmacist,Mid,NetMeds,Chennai,
+Pharma,D.Pharmacy,Retail Pharmacist,MID,1mg,Bangalore,
+Pharma,D.Pharmacy,Dispensing Pharmacist,MID,NetMeds,Chennai,
 Pharma,D.Pharmacy,Senior Pharmacist,HIGH,WHO Pharma,Delhi,
 UG,B.A,Content Writer,STARTUP,Pepper Content,Mumbai,
 UG,B.A,HR Executive,STARTUP,HirePro,Bangalore,
-UG,B.A,Public Relations Officer,Mid,Adfactors,Mumbai,
-UG,B.A,Social Media Manager,Mid,Social Beat,Bangalore,
+UG,B.A,Public Relations Officer,MID,Adfactors,Mumbai,
+UG,B.A,Social Media Manager,MID,Social Beat,Bangalore,
 UG,B.A,Policy Analyst,HIGH,NITI Aayog,Delhi,
 UG,B.Sc,Lab Technician,STARTUP,Neuberg,Chennai,
 UG,B.Sc,Research Assistant,STARTUP,SciGenom,Bangalore,
-UG,B.Sc,Data Analyst,Mid,Accenture,Hyderabad,"Python,SQL,Excel,Power BI,Tableau"
-UG,B.Sc,Quality Analyst,Mid,Biocon,Bangalore,
+UG,B.Sc,Data Analyst,MID,Accenture,Hyderabad,"Python,SQL,Excel,Power BI,Tableau"
+UG,B.Sc,Quality Analyst,MID,Biocon,Bangalore,
 UG,B.Sc,Scientist,HIGH,ISRO,Bangalore,
 UG,B.Com,Accounts Executive,STARTUP,Khatabook,Bangalore,
 UG,B.Com,Audit Assistant,STARTUP,ClearTax,Bangalore,
-UG,B.Com,Financial Analyst,Mid,Deloitte,Hyderabad,
-UG,B.Com,Tax Consultant,Mid,EY,Mumbai,
+UG,B.Com,Financial Analyst,MID,Deloitte,Hyderabad,
+UG,B.Com,Tax Consultant,MID,EY,Mumbai,
 UG,B.Com,Chartered Accountant,HIGH,KPMG,Delhi,
 PG,M.Sc,Research Scientist,STARTUP,SciLabs,Bangalore,
 PG,M.Sc,Data Scientist,STARTUP,DataBricks India,Bangalore,"Python,Statistics,Pandas,Machine Learning,SQL"
-PG,M.Sc,Analyst,Mid,IBM,Bangalore,
-PG,M.Sc,Bioinformatician,Mid,MedGenome,Bangalore,
+PG,M.Sc,Analyst,MID,IBM,Bangalore,
+PG,M.Sc,Bioinformatician,MID,MedGenome,Bangalore,
 PG,M.Sc,Senior Scientist,HIGH,CSIR,Delhi,
 PG,M.Tech,R&D Engineer,STARTUP,DeepTech Labs,Hyderabad,
 PG,M.Tech,AI Engineer,STARTUP,AIWorks,Bangalore,"Python,Machine Learning,Deep Learning,TensorFlow,PyTorch"
-PG,M.Tech,Software Architect,Mid,Infosys,Bangalore,"System Design,Microservices,Cloud Architecture,AWS,Java"
-PG,M.Tech,Systems Engineer,Mid,Qualcomm,Hyderabad,
+PG,M.Tech,Software Architect,MID,Infosys,Bangalore,"System Design,Microservices,Cloud Architecture,AWS,Java"
+PG,M.Tech,Systems Engineer,MID,Qualcomm,Hyderabad,
 PG,M.Tech,Principal Engineer,HIGH,Intel,Bangalore,
 PG,MBA,Business Analyst,STARTUP,StrategyHub,Bangalore,
 PG,MBA,Product Manager,STARTUP,Zomato,Gurgaon,
-PG,MBA,Management Consultant,Mid,Accenture,Mumbai,
-PG,MBA,Operations Manager,Mid,Flipkart,Bangalore,
+PG,MBA,Management Consultant,MID,Accenture,Mumbai,
+PG,MBA,Operations Manager,MID,Flipkart,Bangalore,
 PG,MBA,Strategy Manager,HIGH,BCG,Delhi,
 PG,MCA,Software Developer,STARTUP,CodeCraft,Bangalore,
 PG,MCA,Web Developer,STARTUP,WebEngage,Bangalore,
-PG,MCA,Application Developer,Mid,TCS,Hyderabad,
-PG,MCA,System Analyst,Mid,Wipro,Bangalore,
+PG,MCA,Application Developer,MID,TCS,Hyderabad,
+PG,MCA,System Analyst,MID,Wipro,Bangalore,
 PG,MCA,Technical Lead,HIGH,Google,Bangalore,
+
