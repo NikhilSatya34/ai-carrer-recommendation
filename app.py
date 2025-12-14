@@ -11,28 +11,19 @@ st.set_page_config(
 # -------------------- LOAD DATA --------------------
 df = pd.read_csv("Career_Master_Companies.csv")
 
-# -------------------- GLOBAL STYLES --------------------
+# -------------------- STYLES --------------------
 st.markdown("""
 <style>
-body {
-    background-color: #020617;
-}
+body { background-color:#020617; }
 .card {
-    background: #020617;
-    border: 1px solid #1e293b;
-    border-radius: 18px;
-    padding: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    background:#020617;
+    border:1px solid #1e293b;
+    border-radius:18px;
+    padding:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.35);
 }
-.title {
-    font-size: 42px;
-    font-weight: 800;
-    color: #e5e7eb;
-}
-.subtitle {
-    color: #94a3b8;
-    font-size: 18px;
-}
+.title { font-size:40px;font-weight:800;color:#e5e7eb; }
+.subtitle { color:#94a3b8;font-size:18px; }
 .badge {
     display:inline-block;
     padding:6px 14px;
@@ -49,32 +40,37 @@ st.markdown("""
 <div class="card">
   <div class="title">🎓 AI Career Recommendation System</div>
   <div class="subtitle">
-    Stream • Department • Role • Company Insights
+    Stream → Department → Role based career guidance
   </div>
 </div>
 """, unsafe_allow_html=True)
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-# -------------------- FORM INPUTS --------------------
+# -------------------- FORM --------------------
 with st.form("career_form"):
 
     st.markdown("### 👤 Student Profile")
 
     col1, col2, col3 = st.columns(3)
 
+    # ---------- STREAM ----------
     with col1:
         stream = st.selectbox(
             "🎓 Stream",
             sorted(df["stream"].unique())
         )
 
+    # ---------- DEPARTMENT (FILTERED BY STREAM) ----------
     with col2:
         department = st.selectbox(
             "🏫 Department",
-            sorted(df[df["stream"] == stream]["department"].unique())
+            sorted(
+                df[df["stream"] == stream]["department"].unique()
+            )
         )
 
+    # ---------- ROLE (FILTERED BY STREAM + DEPARTMENT) ----------
     with col3:
         role = st.selectbox(
             "💼 Interested Role",
@@ -87,8 +83,10 @@ with st.form("career_form"):
         )
 
     col4, col5 = st.columns(2)
+
     with col4:
         cgpa = st.slider("📊 CGPA / Score", 5.0, 10.0, 7.0, 0.1)
+
     with col5:
         internship = st.selectbox("🧑‍💻 Internship Experience", ["Yes", "No"])
 
@@ -105,7 +103,7 @@ if submitted:
         <h3 style="color:#e5e7eb;">👤 Student Profile</h3>
         <p><b>Stream:</b> {stream}</p>
         <p><b>Department:</b> {department}</p>
-        <p><b>Role:</b> {role}</p>
+        <p><b>Interested Role:</b> {role}</p>
         <p><b>CGPA:</b> {cgpa}</p>
         <p><b>Internship:</b> {internship}</p>
     </div>
@@ -121,16 +119,15 @@ if submitted:
     ]
 
     if result_df.empty:
-        st.warning("⚠️ No exact matches found. Showing related companies.")
+        st.warning("⚠️ No exact matches found. Showing similar companies.")
         result_df = df[df["stream"] == stream].head(6)
     else:
         result_df = result_df.head(9)
 
-    # -------- COMPANY RESULTS --------
+    # -------- COMPANY CARDS --------
     st.markdown("## 🏢 Recommended Companies")
 
     cols = st.columns(3)
-
     for i, (_, row) in enumerate(result_df.iterrows()):
         with cols[i % 3]:
             st.markdown(f"""
@@ -147,6 +144,6 @@ if submitted:
 st.markdown("""
 <br><br>
 <p style="text-align:center;color:#64748b;">
-Built with ❤️ using Data Science & Streamlit
+Built with ❤️ using Streamlit & Data Science
 </p>
 """, unsafe_allow_html=True)
