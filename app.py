@@ -1,161 +1,152 @@
 import streamlit as st
 import pandas as pd
 
-# ================= PAGE CONFIG =================
+# -------------------- PAGE CONFIG --------------------
 st.set_page_config(
     page_title="AI Career Recommendation System",
+    page_icon="🎓",
     layout="wide"
 )
 
-# ================= LOAD CSVs =================
-career_df = pd.read_csv("carrer_master.csv")
-company_df = pd.read_csv("career_companies_master.csv")
+# -------------------- LOAD DATA --------------------
+df = pd.read_csv("Career_Master_Companies.csv")
 
-# ================= SESSION STATE =================
-if "submitted" not in st.session_state:
-    st.session_state.submitted = False
-
-# ================= HEADER =================
+# -------------------- GLOBAL STYLES --------------------
 st.markdown("""
-<h1 style="text-align:center;">🎓 AI Career Recommendation System</h1>
-<p style="text-align:center;color:gray;">
-Skill-based Career Guidance for Engineering, Medical, Pharmacy, UG & PG Students
-</p>
+<style>
+body {
+    background-color: #020617;
+}
+.card {
+    background: #020617;
+    border: 1px solid #1e293b;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+.title {
+    font-size: 42px;
+    font-weight: 800;
+    color: #e5e7eb;
+}
+.subtitle {
+    color: #94a3b8;
+    font-size: 18px;
+}
+.badge {
+    display:inline-block;
+    padding:6px 14px;
+    border-radius:999px;
+    font-size:13px;
+    border:1px solid #334155;
+    color:#38bdf8;
+}
+</style>
 """, unsafe_allow_html=True)
 
-# ================= SIDEBAR =================
-st.sidebar.markdown("## 👤 Student Profile")
+# -------------------- HEADER --------------------
+st.markdown("""
+<div class="card">
+  <div class="title">🎓 AI Career Recommendation System</div>
+  <div class="subtitle">
+    Stream • Department • Role • Company Insights
+  </div>
+</div>
+""", unsafe_allow_html=True)
 
-# ---- Stream ----
-stream = st.sidebar.selectbox(
-    "Stream",
-    sorted(career_df["stream"].unique())
-)
+st.markdown("<br>", unsafe_allow_html=True)
 
-# ---- Department (filtered by stream) ----
-dept_df = career_df[career_df["stream"] == stream]
-department = st.sidebar.selectbox(
-    "Department",
-    sorted(dept_df["department"].unique())
-)
+# -------------------- FORM INPUTS --------------------
+with st.form("career_form"):
 
-# ---- Role (filtered by department) ----
-role_df = dept_df[dept_df["department"] == department]
-role = st.sidebar.selectbox(
-    "Interested Role",
-    sorted(role_df["role"].unique())
-)
+    st.markdown("### 👤 Student Profile")
 
-cgpa = st.sidebar.slider("CGPA", 5.0, 10.0, 7.0, 0.1)
-internship = st.sidebar.selectbox("Internship Completed?", ["Yes", "No"])
+    col1, col2, col3 = st.columns(3)
 
-# ================= SKILLS =================
-st.sidebar.markdown("## 🧠 Skill Self-Assessment")
+    with col1:
+        stream = st.selectbox(
+            "🎓 Stream",
+            sorted(df["stream"].unique())
+        )
 
-role_row = career_df[
-    (career_df["stream"] == stream) &
-    (career_df["department"] == department) &
-    (career_df["role"] == role)
-].iloc[0]
+    with col2:
+        department = st.selectbox(
+            "🏫 Department",
+            sorted(df[df["stream"] == stream]["department"].unique())
+        )
 
-tech_skills = role_row["technical_skills"].split("|")
-core_skills = role_row["core_skills"].split("|")
+    with col3:
+        role = st.selectbox(
+            "💼 Interested Role",
+            sorted(
+                df[
+                    (df["stream"] == stream) &
+                    (df["department"] == department)
+                ]["job_role"].unique()
+            )
+        )
 
-st.sidebar.markdown("### 🛠️ Technical Skills")
-tech_ratings = {}
-for s in tech_skills:
-    tech_ratings[s] = st.sidebar.slider(s, 1, 5, 3)
+    col4, col5 = st.columns(2)
+    with col4:
+        cgpa = st.slider("📊 CGPA / Score", 5.0, 10.0, 7.0, 0.1)
+    with col5:
+        internship = st.selectbox("🧑‍💻 Internship Experience", ["Yes", "No"])
 
-st.sidebar.markdown("### 🧩 Core Skills")
-core_ratings = {}
-for s in core_skills:
-    core_ratings[s] = st.sidebar.slider(s, 1, 5, 3)
+    submitted = st.form_submit_button("🚀 Get Career Recommendations")
 
-submit = st.sidebar.button("🔍 Get Recommendations")
+# -------------------- RESULTS --------------------
+if submitted:
 
-# ================= PROCESS =================
-if submit:
-    st.session_state.submitted = True
+    st.markdown("<br>", unsafe_allow_html=True)
 
-if not st.session_state.submitted:
-    st.info("👈 Fill profile and click **Get Recommendations**")
-    st.stop()
+    # -------- PROFILE CARD --------
+    st.markdown(f"""
+    <div class="card">
+        <h3 style="color:#e5e7eb;">👤 Student Profile</h3>
+        <p><b>Stream:</b> {stream}</p>
+        <p><b>Department:</b> {department}</p>
+        <p><b>Role:</b> {role}</p>
+        <p><b>CGPA:</b> {cgpa}</p>
+        <p><b>Internship:</b> {internship}</p>
+    </div>
+    """, unsafe_allow_html=True)
 
-# ================= SCORE LOGIC =================
-avg_tech = sum(tech_ratings.values()) / len(tech_ratings)
-avg_core = sum(core_ratings.values()) / len(core_ratings)
+    st.markdown("<br>", unsafe_allow_html=True)
 
-final_score = (
-    (cgpa / 10) * 0.30 +
-    (avg_tech / 5) * 0.35 +
-    (avg_core / 5) * 0.25 +
-    (0.10 if internship == "Yes" else 0)
-)
+    # -------- FILTER COMPANIES --------
+    result_df = df[
+        (df["stream"] == stream) &
+        (df["department"] == department) &
+        (df["job_role"] == role)
+    ]
 
-if final_score >= 0.70:
-    profile = "🔵 Advanced Profile"
-    levels = ["HIGH", "MID", "LOW"]
-elif final_score >= 0.45:
-    profile = "🟡 Intermediate Profile"
-    levels = ["MID", "LOW"]
-else:
-    profile = "🟢 Beginner Profile"
-    levels = ["LOW"]
+    if result_df.empty:
+        st.warning("⚠️ No exact matches found. Showing related companies.")
+        result_df = df[df["stream"] == stream].head(6)
+    else:
+        result_df = result_df.head(9)
 
-st.success(profile)
+    # -------- COMPANY RESULTS --------
+    st.markdown("## 🏢 Recommended Companies")
 
-# ================= COMPANY FILTER =================
-filtered = company_df[
-    (company_df["stream"] == stream) &
-    (company_df["department"] == department) &
-    (company_df["role"] == role) &
-    (company_df["company_level"].isin(levels))
-]
+    cols = st.columns(3)
 
-if filtered.empty:
-    st.warning("No companies found for this profile. Showing general options.")
-    filtered = company_df[
-        (company_df["stream"] == stream) &
-        (company_df["department"] == department) &
-        (company_df["role"] == role)
-    ].head(5)
+    for i, (_, row) in enumerate(result_df.iterrows()):
+        with cols[i % 3]:
+            st.markdown(f"""
+            <div class="card">
+                <h3 style="color:#e5e7eb;">🏢 {row.company_name}</h3>
+                <span class="badge">{row.company_level} LEVEL</span>
+                <p style="margin-top:12px;">💼 <b>Role:</b> {row.job_role}</p>
+                <p>📍 <b>Locations:</b> {row.company_locations}</p>
+                <p>🎓 <b>Stream:</b> {row.stream}</p>
+            </div>
+            """, unsafe_allow_html=True)
 
-# ================= COMPANY TABLE =================
-st.subheader("🏢 Company Recommendations")
-
-st.dataframe(
-    filtered[["company_name", "company_level", "locations"]],
-    use_container_width=True,
-    hide_index=True
-)
-
-# ================= MARKET INSIGHTS =================
-st.subheader("🚀 Role-Based Market Insights")
-
-cols = st.columns(2)
-for i, (_, r) in enumerate(filtered.iterrows()):
-    with cols[i % 2]:
-        st.markdown(f"""
-        <div style="
-            background:#020617;
-            border:1px solid #1e293b;
-            border-radius:16px;
-            padding:16px;
-            margin-bottom:16px;
-        ">
-            <h4 style="color:#38bdf8;">🏢 {r.company_name}</h4>
-            <p>👨‍💻 <b>Role:</b> {r.role}</p>
-            <p>🎓 <b>Department:</b> {department}</p>
-            <p>⭐ <b>Level:</b> {r.company_level}</p>
-            <p>📍 <b>Locations:</b> {r.locations}</p>
-            <p>🛠️ <b>Skills:</b> {", ".join(tech_skills)}</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-# ================= FOOTER =================
-st.markdown(
-    "<p style='text-align:center;color:gray;'>Built with ❤️ using Data Science & AI</p>",
-    unsafe_allow_html=True
-)
-
-
+# -------------------- FOOTER --------------------
+st.markdown("""
+<br><br>
+<p style="text-align:center;color:#64748b;">
+Built with ❤️ using Data Science & Streamlit
+</p>
+""", unsafe_allow_html=True)
