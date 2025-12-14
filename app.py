@@ -11,7 +11,7 @@ st.set_page_config(
 # ---------------- LOAD DATA ----------------
 @st.cache_data
 def load_data():
-    return pd.read_csv("Career_Master_Companies.csv")
+    return pd.read_csv("Master_Companies_Technologies.csv")
 
 df = load_data()
 
@@ -178,4 +178,5 @@ st.markdown("""
 Built with ❤️ using Streamlit & Data Science
 </p>
 """, unsafe_allow_html=True)
+
 
