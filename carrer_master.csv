@@ -1,66 +1,41 @@
-Course_Level,Category,Department,Interested_Role,Technical_Skills,Core_Skills
+stream,department,role,technical_skills,core_skills
+Engineering,Computer Science,Frontend Developer,HTML|CSS|JavaScript|React|NextJS,Creativity|UI Thinking|Problem Solving
+Engineering,Computer Science,Backend Developer,Python|Java|SQL|APIs|NodeJS,Logic Building|Debugging
+Engineering,Computer Science,Full Stack Developer,HTML|CSS|JavaScript|Python|SQL|React,System Thinking|Problem Solving
+Engineering,Computer Science,Data Analyst,Python|SQL|Excel|Power BI|Tableau,Analytical Thinking|Attention to Detail
+Engineering,Computer Science,Data Scientist,Python|Statistics|Machine Learning|EDA,Research Mindset|Critical Thinking
+Engineering,Computer Science,ML Engineer,Python|NumPy|Pandas|TensorFlow|PyTorch,Math Skills|Model Optimization
+Engineering,Computer Science,AI Engineer,Deep Learning|Neural Networks|TensorFlow,Logical Reasoning
 
-UG,Engineering,CSE,Frontend Developer,"HTML|CSS|JavaScript|React|UI Design","Creativity|UI Thinking|Problem Solving"
-UG,Engineering,CSE,Backend Developer,"Python|Java|SQL|APIs|Databases","Logic Building|Debugging|Problem Solving"
-UG,Engineering,CSE,Full Stack Developer,"HTML|CSS|JavaScript|Python|SQL","System Thinking|Adaptability"
-UG,Engineering,CSE,Software Tester,"Manual Testing|Automation|Selenium","Attention to Detail|Analytical Thinking"
-UG,Engineering,CSE,DevOps Engineer,"Linux|Docker|CI/CD|AWS","Automation Mindset|Problem Solving"
+Engineering,Electronics,Embedded Engineer,C|Embedded C|Microcontrollers|RTOS,Debugging|Hardware Knowledge
+Engineering,Electronics,VLSI Engineer,Verilog|VHDL|FPGA,Analytical Thinking
+Engineering,Electrical,Electrical Engineer,Power Systems|MATLAB|SCADA,Troubleshooting|Safety Awareness
+Engineering,Electrical,Control Systems Engineer,PLC|Automation|MATLAB,Precision|Logical Thinking
+Engineering,Mechanical,Mechanical Engineer,AutoCAD|SolidWorks|Manufacturing,Problem Solving
+Engineering,Mechanical,Design Engineer,SolidWorks|CATIA|ANSYS,Creativity|Visualization
+Engineering,Civil,Site Engineer,AutoCAD|Estimation|Surveying,Planning|Execution
+Engineering,Civil,Structural Engineer,STAAD Pro|ETABS|AutoCAD,Attention to Detail
 
-UG,Engineering,AIML,ML Engineer,"Python|NumPy|Pandas|Scikit-learn|TensorFlow","Problem Solving|Analytical Thinking"
-UG,Engineering,AIML,AI Engineer,"Python|Deep Learning|Neural Networks","Logical Reasoning|Research Mindset"
-UG,Engineering,AIML,Data Scientist,"Python|Statistics|Machine Learning|Visualization","Critical Thinking|Curiosity"
+Medical,MBBS,Medical Officer,Clinical Diagnosis|Patient Care|Medical Records,Decision Making|Empathy
+Medical,MBBS,Surgeon,Surgical Procedures|Anatomy|Operation Tools,Precision|Focus
+Medical,MBBS,Radiologist,Imaging|CT Scan|MRI,Observation Skills
+Medical,Nursing,Staff Nurse,Patient Care|Vitals Monitoring|Medication,Compassion|Attention to Detail
+Medical,Physiotherapy,Physiotherapist,Rehabilitation|Exercise Therapy,Communication|Patience
 
-UG,Engineering,AIDS,Data Analyst,"Python|SQL|Excel|Power BI|Tableau","Analytical Thinking|Attention to Detail"
-UG,Engineering,AIDS,BI Developer,"SQL|Power BI|ETL","Business Understanding|Accuracy"
+Pharmacy,B.Pharmacy,Pharmacist,Drug Dispensing|Pharmacology|Prescription Analysis,Accuracy|Responsibility
+Pharmacy,M.Pharmacy,Clinical Pharmacist,Clinical Trials|Drug Safety|Documentation,Analytical Thinking
+Pharmacy,Pharm.D,Drug Safety Associate,Pharmacovigilance|Reporting|Medical Coding,Attention to Detail
 
-UG,Engineering,ECE,Embedded Engineer,"C|Embedded C|Microcontrollers|RTOS","Debugging|Hardware Understanding"
-UG,Engineering,ECE,VLSI Engineer,"Verilog|VHDL|FPGA|ASIC","Analytical Thinking|Precision"
-UG,Engineering,ECE,Network Engineer,"Networking|TCP/IP|Routing","Problem Solving|Logical Thinking"
+UG,B.Sc,Lab Assistant,Lab Equipment|Sample Analysis|Data Recording,Observation Skills
+UG,B.Sc,Biotech Analyst,Biology|Lab Analysis|Documentation,Research Mindset
+UG,B.Com,Account Executive,Tally|Excel|GST|Accounting,Attention to Detail
+UG,B.Com,Audit Assistant,Auditing|Compliance|Excel,Integrity
+UG,B.A,Content Writer,Writing|SEO|Editing,Creativity|Communication
+UG,B.A,Digital Marketer,SEO|Social Media|Analytics,Creativity
 
-UG,Engineering,EEE,Electrical Engineer,"Power Systems|MATLAB|SCADA","Safety Awareness|Troubleshooting"
-UG,Engineering,EEE,Control Systems Engineer,"PLC|Automation|MATLAB","Precision|Logical Thinking"
-
-UG,Engineering,Mechanical,Design Engineer,"AutoCAD|SolidWorks|CATIA|ANSYS","Creativity|Design Thinking"
-UG,Engineering,Mechanical,Production Engineer,"Lean Manufacturing|Quality Control","Process Optimization|Discipline"
-UG,Engineering,Mechanical,Maintenance Engineer,"Machine Maintenance|Diagnostics","Problem Solving|Responsibility"
-
-UG,Engineering,Civil,Site Engineer,"AutoCAD|Estimation|Surveying","Planning|Execution"
-UG,Engineering,Civil,Structural Engineer,"STAAD Pro|ETABS|AutoCAD","Attention to Detail|Analytical Thinking"
-UG,Engineering,Civil,Planning Engineer,"MS Project|Primavera","Time Management|Coordination"
-
-PG,Engineering,M.Tech,CSE,Software Architect,"System Design|Cloud Computing","Strategic Thinking|Leadership"
-PG,Engineering,M.Tech,AIML,AI Researcher,"Deep Learning|Research Methods","Research Mindset|Innovation"
-
-UG,Medical,MBBS,Junior Doctor,"Diagnosis|Clinical Practice|Patient Care","Decision Making|Empathy"
-UG,Medical,MBBS,Medical Officer,"Clinical Knowledge|Medical Ethics","Responsibility|Communication"
-UG,Medical,Nursing,Staff Nurse,"Patient Monitoring|IV Therapy","Empathy|Care"
-UG,Medical,Nursing,ICU Nurse,"Critical Care|Ventilator Handling","Stress Management|Focus"
-UG,Medical,Allied Health,Lab Technician,"Lab Instruments|Sample Analysis","Accuracy|Attention to Detail"
-UG,Medical,Allied Health,Radiology Technician,"Imaging Equipment|Radiology","Technical Accuracy|Care"
-
-UG,Pharmacy,B.Pharm,Medical Representative,"Product Knowledge|Sales|Marketing","Communication|Persuasion"
-UG,Pharmacy,B.Pharm,Clinical Research Associate,"GCP|Clinical Trials|Documentation","Attention to Detail"
-UG,Pharmacy,B.Pharm,Quality Control Analyst,"Drug Testing|Lab Instruments","Accuracy|Discipline"
-
-PG,Pharmacy,M.Pharm,Drug Safety Associate,"Pharmacovigilance|MedDRA","Critical Thinking"
-PG,Pharmacy,M.Pharm,Formulation Scientist,"Drug Formulation|Stability Testing","Problem Solving|Innovation"
-
-UG,Science,B.Sc Physics,Lab Assistant,"Lab Instruments|Data Recording","Accuracy|Observation"
-UG,Science,B.Sc Chemistry,Quality Analyst,"Chemical Analysis|Spectroscopy","Attention to Detail"
-UG,Science,B.Sc Biology,Research Assistant,"Lab Techniques|Data Collection","Curiosity|Observation"
-
-PG,Science,M.Sc Physics,Research Scientist,"Advanced Physics|Simulation","Analytical Thinking|Research Mindset"
-PG,Science,M.Sc Chemistry,Analytical Chemist,"Chromatography|Lab Analysis","Precision|Focus"
-
-UG,Commerce,B.Com,Account Executive,"Accounting|Tally|GST","Numerical Ability|Accuracy"
-UG,Commerce,B.Com,Audit Assistant,"Auditing|Compliance","Integrity|Attention to Detail"
-PG,Commerce,M.Com,Financial Analyst,"Financial Modeling|Excel","Analytical Thinking"
-
-UG,Management,BBA,Business Executive,"Business Operations|MS Excel","Decision Making|Leadership"
-UG,Management,BBA,Marketing Executive,"Digital Marketing|SEO|Content","Creativity|Communication"
-PG,Management,MBA,Business Analyst,"Excel|SQL|Power BI","Problem Solving|Critical Thinking"
-PG,Management,MBA,HR Executive,"Recruitment|HR Policies","People Management|Empathy"
-PG,Management,MBA,Operations Manager,"Process Management|Supply Chain","Leadership|Planning"
-
-UG,IT,BCA,Software Developer,"Python|Java|Web Development","Logic Building|Problem Solving"
-PG,IT,MCA,Software Engineer,"Full Stack|Databases","System Thinking|Debugging"
+PG,MCA,Software Engineer,Java|Python|Databases|DSA,Logical Thinking
+PG,MCA,System Analyst,System Design|UML|Databases,Analytical Thinking
+PG,MBA,Business Analyst,Excel|Power BI|Business Strategy,Decision Making
+PG,MBA,HR Analyst,HR Analytics|Excel|Reporting,People Skills
+PG,M.Sc,Research Associate,Research Methods|Data Analysis|Reporting,Critical Thinking
+PG,M.Tech,Data Engineer,SQL|ETL|Big Data|Spark,System Thinking
