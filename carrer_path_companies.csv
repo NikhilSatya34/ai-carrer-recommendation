@@ -1,0 +1,40 @@
+stream,department,job_role
+Engineering,AIDS,AI Engineer
+Engineering,AIDS,ML Engineer
+Engineering,AIDS,Data Scientist
+Engineering,AIML,AI Engineer
+Engineering,AIML,ML Engineer
+Engineering,CSE,Software Engineer
+Engineering,CSE,Frontend Developer
+Engineering,CSE,Backend Developer
+Engineering,Civil,Site Engineer
+Engineering,Civil,Structural Engineer
+Engineering,Mechanical,Design Engineer
+Engineering,Mechanical,Production Engineer
+
+Medical,MBBS,Junior Doctor
+Medical,MBBS,Medical Officer
+Medical,Nursing,Staff Nurse
+Medical,Nursing,ICU Nurse
+Medical,Physiotherapy,Physiotherapist
+
+Pharma,B.Pharmacy,Pharmacist
+Pharma,B.Pharmacy,Medical Representative
+Pharma,M.Pharmacy,Clinical Research Associate
+Pharma,D.Pharmacy,Retail Pharmacist
+
+UG,B.A,Content Writer
+UG,B.A,HR Executive
+UG,B.Sc,Lab Assistant
+UG,B.Sc,Research Assistant
+UG,B.Com,Accountant
+UG,B.Com,Audit Assistant
+
+PG,M.Sc,Data Analyst
+PG,M.Sc,Research Scientist
+PG,M.Tech,Solution Architect
+PG,M.Tech,Senior Engineer
+PG,MBA,Business Analyst
+PG,MBA,Product Manager
+PG,MCA,Software Engineer
+PG,MCA,System Analyst
